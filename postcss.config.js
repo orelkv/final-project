@@ -5,27 +5,27 @@ module.exports = {
   parser: 'postcss-scss',
   plugins: [
     require("postcss-easy-import")({
-      extensions: ".pcss"
+      extensions: ".pcss"                     // удобное подключение файлов
     }),
-    require("autoprefixer")({
+    require("autoprefixer")({           /// автопрефиксер
       cascade: false
     }),
-    require("postcss-advanced-variables")({
+    require("postcss-advanced-variables")({             /// берет переменные из файла и резолвит их в файлы
       variables: JSON.parse(
         fs.readFileSync("./src/styles/variables.json", "utf-8")
       )
     }),
-    require("postcss-nested"),
-    require("postcss-rgb"),
-    require("postcss-inline-svg")({
+    require("postcss-nested"),            // использование вложенностей в тексте
+    require("postcss-rgb"),               // чтобы передавать rgba (#ffffff, .5) в указанном формате
+    require("postcss-inline-svg")({         // для вставки иконок svg  в css  путем указания только имен файлов
       removeFill: true,
       path: "./src/images/icons"
     }),
-    require("cssnano"),
-    require("postcss-pxtorem")({
-      rootValue: 16,
-      propList: ["*", "!*border*"],
-      selectorBlackList: [/^html$/]
+    require("cssnano"),             // сжатие css
+    require("postcss-pxtorem")({        // для перевода все в rem
+      rootValue: 16,                            // базовый размер
+      propList: ["*", "!*border*"],         // преобразовывать все свойства, кроме того что содержит border
+      selectorBlackList: [/^html$/]         // не обработывать тег html
     })
   ]
 };

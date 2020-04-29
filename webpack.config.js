@@ -9,14 +9,14 @@ const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = (env, argv) => {
   const isProductionBuild = argv.mode === "production";
-  const publicPath = '/';
+  const publicPath = '/';                               // указывает где должен лежать проект. если папка dist лежит еще где то, то необходимио будет изменить адрес
 
   const pcss = {
-    test: /\.(p|post|)css$/,
+    test: /\.(p|post|)css$/,          // проверяет если в конце файла будет стоять . p post css то выполнит инструкции
     use: [
-      isProductionBuild ? MiniCssExtractPlugin.loader : "vue-style-loader",
-      "css-loader",
-      "postcss-loader"
+      isProductionBuild ? MiniCssExtractPlugin.loader : "vue-style-loader",   // если сборка для разработки, то выполнить все снизу вверх. верх - добавить путь в .html для подключения css
+      "css-loader",         //склеить файлы в css
+      "postcss-loader"        // преобразовать файлы из postcss в css
     ]
   };
 
@@ -85,24 +85,24 @@ module.exports = (env, argv) => {
 
   const config = {
     entry: {
-      main: "./src/main.js",
-      admin: "./src/admin/main.js"
+      main: "./src/main.js",                    // пути за которыми нужно следить основной файл
+      admin: "./src/admin/main.js"              // админка
     },
     output: {
-      path: path.resolve(__dirname, "./dist"),
-      filename: "[name].[hash].build.js",
+      path: path.resolve(__dirname, "./dist"),        // куда ложить готовые файлы. path.resolve - модуль для работы с путями
+      filename: "[name].[hash].build.js",               // порядок формирования имени конечного файла
       publicPath: isProductionBuild ? publicPath : "",
-      chunkFilename: "[chunkhash].js"
+      chunkFilename: "[chunkhash].js"               // как будет называться файл для зависимостей (vue, jquery и т.п.)
     },
     module: {
-      rules: [pcss, vue, js, files, svg, pug]
+      rules: [pcss, vue, js, files, svg, pug]     // правила для обработки зависимостей
     },
     resolve: {
       alias: {
-        vue$: "vue/dist/vue.esm.js",
-        images: path.resolve(__dirname, "src/images")
+        vue$: "vue/dist/vue.esm.js",                      // если будет где нибудь будет прописано подключение vue то будет подключен именно указанный путь
+        images: path.resolve(__dirname, "src/images")     // для удобства нужно указать будет только папку и название файла
       },
-      extensions: ["*", ".js", ".vue", ".json"]
+      extensions: ["*", ".js", ".vue", ".json"]     // если прописать IMPORT "././" ТО БУдет искать файлы с указанными расширениями
     },
     devServer: {
       historyApiFallback: true,
@@ -110,25 +110,25 @@ module.exports = (env, argv) => {
       overlay: true
     },
     performance: {
-      hints: false
+      hints: false        // подсказки webpack
     },
     plugins: [
-      new HtmlWebpackPlugin({
-        template: "src/index.pug",
-        chunks: ["main"]
+      new HtmlWebpackPlugin({           // плагин для сборки html
+        template: "src/index.pug",      // какой файл взять для сборки html
+        chunks: ["main"]                // какой файл подключить в index.pug
       }),
       new HtmlWebpackPlugin({
         template: "src/admin/index.pug",
         filename: "admin/index.html",
         chunks: ["admin"]
       }),
-      new SpriteLoaderPlugin({ plainSprite: true }),
+      new SpriteLoaderPlugin({ plainSprite: true }),      // собирает файл спрайта, без его спрайт будет подключен прямо в html
       new VueLoaderPlugin()
     ],
-    devtool: "#eval-source-map"
+    devtool: "#eval-source-map"         //сорсмапы
   };
 
-  if (isProductionBuild) {
+  if (isProductionBuild) {          // проверка на продакщн или девелопер
     config.devtool = "none";
     config.plugins = (config.plugins || []).concat([
       new webpack.DefinePlugin({
@@ -144,13 +144,13 @@ module.exports = (env, argv) => {
 
     config.optimization = {};
 
-    config.optimization.minimizer = [
-      new TerserPlugin({
+    config.optimization.minimizer = [       
+      new TerserPlugin({                  // сжатие js
         cache: true,
         parallel: true,
         sourceMap: false
       }),
-      new OptimizeCSSAssetsPlugin({})
+      new OptimizeCSSAssetsPlugin({})       //сжатие css
     ];
   }
 

@@ -26,12 +26,13 @@ body
                       a(href='#').pages-menu__link #{item}
             
             .header__socials
-              - var icons = ['insta', 'vk', 'github']
-                ul.socials__list
-                  each item in icons
-                    li.socials__item
-                      a(href='#').socials__link
-                        +icon(`${item}`, socials__icon)
+              .socials
+                - var icons = ['insta', 'vk', 'github']
+                  ul.socials__list
+                    each item in icons
+                      li.socials__item
+                        a(href='#').socials__link
+                          +icon(`${item}`, socials__icon)
          
           
           .hero__content
@@ -79,58 +80,181 @@ body
 
 
 
-      section.values
-        .container.values__container
-          .values__left
-            .music__images
-              +image('content/skills/rock-n-roll.png', 'music__img-text', 'Рок-н-ролл')
-              +image('content/skills/guitar.png', 'music__guitar', 'Гитара')
+    section.values
+      .container.values__container
+        .values__left
+          .music__images
+            +image('content/skills/rock-n-roll.png', 'music__img-text', 'Рок-н-ролл')
+            +image('content/skills/guitar.png', 'music__guitar', 'Гитара')
 
 
-          .values__right
-            .skills
-              .skills__content
-                h3.title__pages-row.skills__title Чем я могу быть полезен вам
-                .skills__text
-                  p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+        .values__right
+          .skills
+            .skills__content
+              h3.title__content.skills__title Чем я могу быть полезен вам
+              .skills__text
+                p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
 
-              .skills__tech
-                ul.skills__list
-                  -
-                    var items = [
-                      ['Frontend', ['Html5', 'Css3', 'Javascript', 'jQuery и Vue.js']],
-                      ['Workflow', ['Git', 'Terminal', 'Gulp', 'Webpack']]
-                    ]
-                  li.skills__item.skills-row
-                    each item in items
-                      h4.skills-row__title #{item[0]}
-                        ul.skills-row__list 
-                         each skill in item[1]
+            .skills__tech
+              ul.skills__list
+                -
+                  var items = [
+                    ['Frontend', ['Html5', 'Css3', 'Javascript', 'jQuery и Vue.js']],
+                    ['Workflow', ['Git', 'Terminal', 'Gulp', 'Webpack']]
+                  ]
+                li.skills__item.skills-row
+                  each item in items
+                    h4.skills-row__title #{item[0]}
+                      ul.skills-row__list 
+                        each skill in item[1]
                           li.skills-row__item
-                            .skill
-
+                            .skill                              
                               h4.skill__title #{skill}
 
 
 
-      section.works
-        .container.works__container
+    section.works
+      .container.works__container
 
-          h2.title__section.works__title
+        h2.title__section.works__title Мои работы
 
-          .works__content
-           .slider
-            .slider__previews
-              .slider
+        .works__content
+          .slider-pages
+            - var items = ['autumn.jpg','car.jpg', 'fantasy.jpg', 'mountains.jpg', 'tram.jpg']
+              ul.slider-pages__list
+                each item, index in items
+                  li.slider-pages__item
+                      .slider-pages__previews
+                        .slider-pages__num #{index+1}
+                        .slider-pages__screen
+                          +image(`content/preview/${item}`, 'slider__img-screen')
+                        .slider-pages__var
+                          - var pages = ['autumn.jpg','car.jpg', 'fantasy.jpg', 'mountains.jpg', 'tram.jpg']
+                            ul.slider-pages__var-list
+                              each page in pages
+                                li.slider-pages__var-item
+                                  +image(`content/preview/${page}`, 'slider__img-page')
+
+                          .slider-pages__btns
+                            .slider-pages__btn
+                              a(href='#').btn-pointer.slider-pages__btn-nav.slider-pages__nav_next
+                              a(href='#').btn-pointer.slider-pages__btn-nav.slider-pages__nav_next
 
 
-            .slider__desc
+                      .slider-pages__desk
+                        .slider-pages__tech.slider-tech
+                          - var techs = ['Html', 'Css', 'Javascript']
+                          ul.slider-tech__list
+                            each tech in techs 
+                              li.slider-tech__item
+                                .slider-tech__text
+                                  p #{tech}
+
+                        .slider-pages__title.title__content Сайт школы образования
+
+                        .slider-pages__info 
+                          p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
+
+                        .slider-pages__wrap-link
+                          a(href='#').slider-pages__link Посмотреть сайт
 
 
 
+    section.comments
+      .container.comments__container
+        h2.title__section.comments__title Что обо мне говорят
+        .comments__content
+          .slider-comments
+            .slider-comments__btns
+              a(href='#').btn-pointer.slider-comments__btn-nav.slider-comments__btn-nav_next
+              a(href='#').btn-pointer.slider-comments__btn-nav.slider-comments__btn-nav_next
+
+            .slider-comments__wrap
+              .slider-comments__content
+                -
+                  var avatar = [
+                    ['user.jpg', 'Ковальчук Дмитрий', 'Основатель loftschool', 'Фото Сергея'],
+                    ['user.jpg', 'Ковальчук Дмитрий', 'Основатель loftschool', 'Фото Сергея'],
+                    ['user.jpg', 'Ковальчук Дмитрий', 'Основатель loftschool', 'Фото Сергея'],
+                    ['user.jpg', 'Ковальчук Дмитрий', 'Основатель loftschool', 'Фото Сергея'],
+                  ]
+
+                ul.slider-comments__list
+                  each item in avatar
+                    li.slider-comments__item
+                      .slider-comments__text
+                        p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
+
+                      .slider-comments__avatar
+                        .slider-comments__photo
+                          .user__avatar
+                            .avatar
+                              +image(`content/${item[0]}`, 'avatar__img', `${item[3]}`)
+                        .slider-comments__info
+                          h4.user__name.slider-comments__name #{item[1]}
+                          .user__prof #{item[2]}
+    
+
+
+    section.connect
+      .container.connect__container
+        h2.title__section.connect__title
+        .connect__content
+          form.contacts-form(action="post")
+            .contacts-form__row
+              .contacts-form__input
+                label.contacts-form__label
+                  span.contacts-form__text Введите ваше имя
+                  input(type="text" id='name' name="name" required).contacts-form__input.contacts-form__input_name
+              .contacts-form__input
+                label.contacts-form__label
+                  span.contacts-form__text Введите ваш email
+                  input(type="email" id='email' name="email" required).contacts-form__input.contacts-form__input_email
+            
+            .contacts-form__row
+              .contacts-form__input
+                label.contacts-form__label
+                  span.contacts-form__text Сообщение к письму
+                  textarea(id="message" name="message" required).contacts-form__input.contacts-form__input_message
+
+            button(type='submit').btn Отправить
 
 
 
+    footer.footer
+      .container.footer__container
+        .footer__left
+          .main-info
+            .main-info__data © 2019
+            .main-info__text
+              h4.user__name.footer__name Алексей Орлов
+              .main-info__text-about Личный сайт веб-разработчика
+              
+        .footer__right
+          .footer__row.footer__menu
+            nav.pages-menu
+              - var menu = ['Главная', 'Обо мне', 'Навыки', 'Работы', 'Отзывы', 'Связаться']
+              ul.pages-menu__list 
+                each item in menu
+                  li.pages-menu__item
+                    a(href='#').pages-menu__link #{item}
+          
+          .footer__row.footer__details
+            .details
+              .details__text Этот сайт я сделал в рамках обучения в Школе онлайн образования Loftschool
+              .socials.footer__socials
+                - var icons = ['insta', 'vk', 'github']
+                  ul.socials__list
+                    each item in icons
+                      li.socials__item
+                        a(href='#').socials__link
+                          +icon(`${item}`, socials__icon)
+          
+            .citation
+              blockquote.citation__text
+                p Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
+                cite.citation__author Martin Golding
 
 
 
+                

@@ -107,7 +107,7 @@ module.exports = (env, argv) => {
     devServer: {
       historyApiFallback: true,
       noInfo: false,
-      overlay: true
+      overlay: true,
     },
     performance: {
       hints: false        // подсказки webpack
@@ -144,7 +144,7 @@ module.exports = (env, argv) => {
 
     config.optimization = {};
 
-    config.optimization.minimizer = [       
+    config.optimization.minimizer = [
       new TerserPlugin({                  // сжатие js
         cache: true,
         parallel: true,

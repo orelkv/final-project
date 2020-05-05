@@ -1,0 +1,43 @@
+.footer {
+  background-color: #100022;
+  color: #ffffff;
+  font-family: "Open Sans", Helvetica, sans-serif;
+
+
+  &__container {
+    position: relative;
+  }
+
+  &__content {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__left {
+    width: 25%;
+  }
+
+  &__right {
+    display: flex;
+    flex-direction: column;
+    width: 66%;
+  }
+
+  &__menu {
+    margin-bottom: 55px;
+
+    .pages-menu__list {
+      margin: 0 0;
+      justify-content: flex-start;
+    }
+  }
+
+  &__details {
+    display: flex;
+    justify-content: space-between;
+  }
+
+}

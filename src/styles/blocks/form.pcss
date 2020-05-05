@@ -1,0 +1,120 @@
+.contacts-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-family: "Open Sans", Helvetica, sans-serif;
+  font-style: normal;
+
+
+  &__row {
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 40px;
+  }
+
+  &__input-wrap {
+    width: 40%;
+  }
+
+  &__label {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    &:before {
+      content: "";
+      width: 30px;
+      height: 30px;
+      position: absolute;
+      display: block;
+      bottom: 12px;
+      left: 0;
+      z-index: 999;
+      opacity: .3;
+    }
+  }
+
+  &__text {
+    margin-bottom: 22px;
+    opacity: 0.3;
+    font-size: 16px;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+    padding-left: 47px;
+    // opacity: 0;
+    display: none;
+  }
+
+  &__input {
+    width: 100%;
+    border: none;
+    outline: none;
+    border-bottom: solid 1px #ffffff;
+    background-color: transparent;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 2;
+    padding: 10px 48px;
+    position: relative;
+
+    // &:before {
+    //   content: "";
+    //   width: 30px;
+    //   height: 30px;
+    //   position: absolute;
+    //   display: block;
+    //   top: 0;
+    //   left: 0;
+    //   z-index: 999;
+    //   opacity: .3;
+    // }
+
+  
+
+    &::placeholder {
+      color: rgb(255, 255, 255);
+      opacity: 0.3;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 2;
+    }
+
+    &:focus::placeholder {
+      color: transparent;
+    }
+
+    &:focus {
+      .contacts-form__text {
+        opacity: 1;
+        display: block;
+      }
+      .contacts-form__label:before {
+        background: svg-load('', fill=#ffffff) center center / cover no-repeat;
+      }
+    }
+  }
+
+  &__input-wrap_textarea {
+    width: 100%;
+  }
+
+  &__input_message {
+    resize: none;
+    overflow: auto;
+  }
+
+  &__label_name:before {
+    background: svg-load('avatar.svg', fill=#ffffff) center center / cover no-repeat;
+  }
+
+  &__label_email:before {
+    background: svg-load('envelope.svg', fill=#ffffff) center center / cover no-repeat;
+  }
+
+  &__label_message:before {
+    background: svg-load('message.svg', fill=#ffffff) center center / cover no-repeat;
+  }
+
+}

@@ -36,7 +36,7 @@
 
   &__screen {
     position: relative;
-    width: 65%;
+    width: 968px;
     height: 100%;
     left: 0;
   }
@@ -53,6 +53,7 @@
     display: inline-flex;
     width: 78%;
     height: 100px;
+    z-index: 9999;
   }
 
   &__var-list {
@@ -88,15 +89,10 @@
     z-index: 9999;
   }
 
-
   &__btn-nav {
     width: 50px;
     height: 50px;
     background-color: #353e4e;
-    display: block;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
     &:hover {
       background-color: #5500f2;
@@ -146,24 +142,5 @@
       width: 15px;
       height: 15px;
     }
-  }
-}
-
-.btn-pointer {
-  &__next {
-    width: 10px;
-    height: 10px;
-    fill: #ffffff;
-  }
-
-  &__prev {
-    width: 10px;
-    height: 10px;
-    fill: #ffffff;
-    transform: rotate(180deg);
-  }
-
-  &_none {
-    opacity: .3;
   }
 }

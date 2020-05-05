@@ -1,0 +1,48 @@
+.pages-menu {
+
+  &__list {
+    display: flex;
+    margin: 0 10px;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__item {
+    font-family: "Open Sans", Helvetica, sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    margin-right: 60px;
+    font-size: 16px;
+    // position: relative;
+
+    // &:before {
+    //   content: "";
+    //   display: none;
+    //   background-color: #dc9322;
+    //   position: absolute;
+    //   width: 129px;
+    //   height: 3px;
+    //   bottom: -40px;
+    //   left: -50%;
+    // }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &_active {
+      color: #dc9322;
+      font-weight: bold;
+
+      // &.pages-menu__item:before {
+      //   display: block;
+      // }
+    }
+  }
+
+  &__link {
+    &:hover {
+      font-weight: bold;
+    }
+  }
+}

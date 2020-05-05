@@ -1,0 +1,42 @@
+.user-info {
+  font-family: "Open Sans", Helvetica, sans-serif;
+  font-weight: 600;
+  font-style: normal;  
+  font-size: 16px;
+
+  &__prolog {
+    margin-bottom: 15px;
+    opacity: .5;
+  }
+
+  &__title {
+    margin-bottom: 30px;
+  }
+
+  &__text {
+    margin-bottom: 90px;
+    opacity: .5;
+    line-height: 1.88;
+
+  }
+
+  &__ps {
+    font-style: italic;
+    font-weight: normal;
+    opacity: .5;
+    position: relative;
+    line-height: 1.88;
+
+    &:before {
+      content: "*";
+      display: block;
+      position: absolute;
+      top: 15px;
+      left: -60px;
+      opacity: 0.5;
+      font-size: 48px;
+      line-height: 0.63;
+      color: rgb(219, 2, 0);
+    }
+  }
+}

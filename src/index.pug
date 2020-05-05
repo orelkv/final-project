@@ -11,9 +11,9 @@ body
   .wrapper
     .welcome-section  
       section.section.hero
+
         .container.hero__container
-          header.header 
-            
+          header.header
             .header__logo 
               .logo ВА
             
@@ -22,7 +22,7 @@ body
                 - var menu = ['Главная', 'Обо мне', 'Навыки', 'Работы', 'Отзывы', 'Связаться']
                 ul.pages-menu__list 
                   each item in menu
-                    li.pages-menu__item
+                    li.pages-menu__item.pages-menu__item_active
                       a(href='#').pages-menu__link #{item}
             
             .header__socials
@@ -32,29 +32,29 @@ body
                     each item in icons
                       li.socials__item
                         a(href='#').socials__link
-                          +icon(`${item}`, socials__icon)
-         
-          
+                          +icon(item, 'socials__icon')
+
           .hero__content
-            .user-info
-              .user-info__text
-              h1.user-info__title
+            .user-prolog
+              .user-prolog__text Личный сайт<br>веб разработчика
+              h1.user-prolog__title Алексей<br>Орлов
 
           .hero__btn
-            .scroll-down
+            a(href="#").scroll-down
               .scroll-down__text Скролл
               .scroll-down__btn
+                +icon('scroll', 'scroll-down__icon')
 
 
 
-      section.about       
+      section.section.about       
         .container.about__container
           .about__content
             .about__left
               .user
                 .user__avatar
                   .avatar
-                    +image('content/user.jpg', 'avatar__img', 'Фото Сергея')
+                    +image('content/user.jpg', 'avatar__img', 'Фото Алексея')
                 .user__data
                   -
                     var data = [
@@ -73,17 +73,17 @@ body
 
             .about__right
               .user-info
-                h5.user-info__prolog Привет, меня зовут
-                h2.title__section.user-info__title Орлов Алексей
+                .user-info__prolog Привет, меня зовут
+                h2.title-section.user-info__title Орлов Алексей
                 .user-info__text Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
                 .user-info__ps  Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
 
 
 
-    section.values
+    section.section.values
       .container.values__container
         .values__left
-          .music__images
+          .music
             +image('content/skills/rock-n-roll.png', 'music__img-text', 'Рок-н-ролл')
             +image('content/skills/guitar.png', 'music__guitar', 'Гитара')
 
@@ -91,7 +91,7 @@ body
         .values__right
           .skills
             .skills__content
-              h3.title__content.skills__title Чем я могу быть полезен вам
+              h3.title-content.skills__title Чем я могу быть полезен вам
               .skills__text
                 p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
 
@@ -99,68 +99,74 @@ body
               ul.skills__list
                 -
                   var items = [
-                    ['Frontend', ['Html5', 'Css3', 'Javascript', 'jQuery и Vue.js']],
-                    ['Workflow', ['Git', 'Terminal', 'Gulp', 'Webpack']]
+                    ['Frontend', ['HTML5', 'CSS3', 'Javascript', 'jQuery и Vue.js']],
+                    ['Workflow', ['GIT', 'Terminal', 'Gulp', 'Webpack']]
                   ]
-                li.skills__item.skills-row
-                  each item in items
+                each item in items
+                  li.skills__item.skills-row
                     h4.skills-row__title #{item[0]}
-                      ul.skills-row__list 
-                        each skill in item[1]
-                          li.skills-row__item
-                            .skill                              
-                              h4.skill__title #{skill}
+                    ul.skills-row__list 
+                      each skill in item[1]
+                        li.skills-row__item
+                          .skill
+                            svg.skill__icon(viewBox='0 0 154 154')
+                              lineargradient#skill-gradient 
+                                stop(offset='0%' stop-color='#243fe5')              
+                                stop(offset='100%' stop-color='#4d87ee')
+                              circle.skill__circle(stroke='#e9e9e9' stroke-width='10' fill='transparent' r='67' cx='77' cy='77')         
+                              circle.skill__circle.skill__circle_top(stroke='url(#skill-gradient' stroke-width='20' fill='transparent' r='67' cx='77' cy='77' transform= 'rotate(180 77 77)')         
+                            h4.skill__title #{skill}
 
 
 
-    section.works
+    section.section.works
       .container.works__container
 
-        h2.title__section.works__title Мои работы
+        h2.title-section.works__title Мои работы
 
         .works__content
           .slider-pages
-            - var items = ['autumn.jpg','car.jpg', 'fantasy.jpg', 'mountains.jpg', 'tram.jpg']
-              ul.slider-pages__list
-                each item, index in items
-                  li.slider-pages__item
-                      .slider-pages__previews
-                        .slider-pages__num #{index+1}
-                        .slider-pages__screen
-                          +image(`content/preview/${item}`, 'slider__img-screen')
-                        .slider-pages__var
-                          - var pages = ['autumn.jpg','car.jpg', 'fantasy.jpg', 'mountains.jpg', 'tram.jpg']
-                            ul.slider-pages__var-list
-                              each page in pages
-                                li.slider-pages__var-item
-                                  +image(`content/preview/${page}`, 'slider__img-page')
+            ul.slider-pages__list
+              li.slider-pages__item
+                .slider-pages__num 2
+                .slider-pages__screen
+                  .slider-pages__screen-wrap
+                    +image(`content/preview/mountains.jpg`, 'slider-pages__img-screen')
+                  .slider-pages__var
+                    - var pages = ['autumn.jpg','car.jpg', 'fantasy.jpg', 'mountains.jpg']
+                      ul.slider-pages__var-list
+                        each page in pages
+                          li.slider-pages__var-item
+                            +image(`content/preview/${page}`, 'slider-pages__img-page')
+                            .slider-pages__mask
 
-                          .slider-pages__btns
-                            .slider-pages__btn
-                              a(href='#').btn-pointer.slider-pages__btn-nav.slider-pages__nav_next
-                              a(href='#').btn-pointer.slider-pages__btn-nav.slider-pages__nav_next
-
-
-                      .slider-pages__desk
-                        .slider-pages__tech.slider-tech
-                          - var techs = ['Html', 'Css', 'Javascript']
-                          ul.slider-tech__list
-                            each tech in techs 
-                              li.slider-tech__item
-                                .slider-tech__text
-                                  p #{tech}
-
-                        .slider-pages__title.title__content Сайт школы образования
-
-                        .slider-pages__info 
-                          p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
-
-                        .slider-pages__wrap-link
-                          a(href='#').slider-pages__link Посмотреть сайт
+                    .slider-pages__btns
+                      a(href='#').btn-pointer.slider-pages__btn-nav.slider-pages__nav_next
+                        +icon('arrow-down', 'btn-pointer__next')
+                      a(href='#').btn-pointer.slider-pages__btn-nav.slider-pages__nav_prev
+                        +icon('arrow-down', 'btn-pointer__prev')
 
 
+                .slider-pages__desk
+                  .slider-pages__tech.slider-tech
+                    - var techs = ['HTML', 'CSS', 'Javascript']
+                    ul.slider-tech__list
+                      each tech in techs 
+                        li.slider-tech__item
+                          .slider-tech__text
+                            p #{tech}
 
-    section.comments
+                  .title-content.slider-pages__title Сайт школы образования
+
+                  .slider-pages__info 
+                    p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
+
+                  .slider-pages__wrap-link
+                    a(href='#').slider-pages__link Посмотреть сайт
+
+
+
+    section.section.comments
       .container.comments__container
         h2.title__section.comments__title Что обо мне говорят
         .comments__content
@@ -196,7 +202,7 @@ body
     
 
 
-    section.connect
+    section.section.connect
       .container.connect__container
         h2.title__section.connect__title
         .connect__content
@@ -221,7 +227,7 @@ body
 
 
 
-    footer.footer
+    footer.section.footer
       .container.footer__container
         .footer__left
           .main-info

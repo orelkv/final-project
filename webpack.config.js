@@ -9,7 +9,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = (env, argv) => {
   const isProductionBuild = argv.mode === "production";
-  const publicPath = '/';                               // указывает где должен лежать проект. если папка dist лежит еще где то, то необходимио будет изменить адрес
+  const publicPath = '/final-project/';                               // указывает где должен лежать проект. если папка dist лежит еще где то, то необходимио будет изменить адрес
 
   const pcss = {
     test: /\.(p|post|)css$/,          // проверяет если в конце файла будет стоять . p post css то выполнит инструкции

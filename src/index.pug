@@ -106,12 +106,12 @@ html(lang="ru")
                   each item in items
                     li.skills__item.skills-row
                       h4.skills-row__title #{item[0]}
+                      svg(width='0' height='0')
+                        defs
+                          lineargradient#skill-gradient
+                            stop(offset='0%' stop-color='#243fe5')             
+                            stop(offset='100%' stop-color='#4d87ee')
                       ul.skills-row__list
-                        svg(width='0' height='0')
-                          defs
-                            lineargradient#skill-gradient
-                              stop(offset='0%' stop-color='#243fe5')             
-                              stop(offset='100%' stop-color='#4d87ee')
 
                         each skill in item[1]
                           li.skills-row__item

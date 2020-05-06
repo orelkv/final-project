@@ -27,12 +27,18 @@ html(lang="ru")
               
               .header__socials
                 .socials
-                  - var icons = ['insta', 'vk', 'github']
-                    ul.socials__list
-                      each item in icons
-                        li.socials__item
-                          a(href='#').socials__link
-                            +icon(item, 'socials__icon')
+                  -
+                    var icons = [
+                      ['insta', 'https://www.instagram.com/or_alex/'],
+                      ['vk', '#'],
+                      ['github', 'https://github.com/orelkv']
+                    ]
+
+                  ul.socials__list
+                    each item in icons
+                      li.socials__item
+                        a(href=`${item[1]}`).socials__link
+                          +icon(`${item[0]}`, 'socials__icon')
 
             .hero__content
               .user-prolog

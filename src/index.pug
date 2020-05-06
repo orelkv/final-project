@@ -97,6 +97,12 @@ html(lang="ru")
                   p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
 
               .skills__tech
+                svg(width='0' height='0')
+                  defs
+                    lineargradient#skill-gradient
+                      stop(offset='0%' stop-color='#243fe5')             
+                      stop(offset='100%' stop-color='#4d87ee')
+
                 ul.skills__list
                   -
                     var items = [
@@ -106,13 +112,7 @@ html(lang="ru")
                   each item in items
                     li.skills__item.skills-row
                       h4.skills-row__title #{item[0]}
-                      svg(width='0' height='0')
-                        defs
-                          lineargradient#skill-gradient
-                            stop(offset='0%' stop-color='#243fe5')             
-                            stop(offset='100%' stop-color='#4d87ee')
                       ul.skills-row__list
-
                         each skill in item[1]
                           li.skills-row__item
                             .skill

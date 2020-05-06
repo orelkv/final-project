@@ -73,9 +73,10 @@ body
 
             .about__right
               .user-info
-                .user-info__prolog Привет, меня зовут
-                h2.title-section.user-info__title Орлов Алексей
-                .user-info__text Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
+                .user-info__content
+                  .user-info__prolog Привет, меня зовут
+                  h2.title-section.user-info__title Орлов Алексей
+                  .user-info__text Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
                 .user-info__ps  Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
 
 
@@ -130,15 +131,51 @@ body
               li.slider-pages__item
                 .slider-pages__num 2
                 .slider-pages__screen
-                  .slider-pages__screen-wrap
-                    +image(`content/preview/mountains.jpg`, 'slider-pages__img-screen')
+                  +image(`content/preview/mountains.jpg`, 'slider-pages__img-screen')
                   .slider-pages__var
-                    - var pages = ['autumn.jpg','car.jpg', 'fantasy.jpg', 'mountains.jpg']
-                      ul.slider-pages__var-list
-                        each page in pages
-                          li.slider-pages__var-item
-                            +image(`content/preview/${page}`, 'slider-pages__img-page')
-                            .slider-pages__mask
+                    .slider-pages__var-content
+                      - var pages = ['autumn.jpg', 'autumn.jpg', 'autumn.jpg', 'autumn.jpg','car.jpg', 'fantasy.jpg', 'mountains.jpg']
+                        ul.slider-pages__var-list
+                          each page in pages
+                            li.slider-pages__var-item
+                              +image(`content/preview/${page}`, 'slider-pages__img-page')
+                              //- .slider-pages__mask
+
+                  .slider-pages__btns
+                    a(href='#').btn-pointer.slider-pages__btn-nav.slider-pages__nav_next
+                      +icon('arrow-down', 'btn-pointer__next')
+                    a(href='#').btn-pointer.slider-pages__btn-nav.slider-pages__nav_prev
+                      +icon('arrow-down', 'btn-pointer__prev')
+
+
+                .slider-pages__desk
+                  .slider-pages__tech.slider-tech
+                    - var techs = ['HTML', 'CSS', 'Javascript']
+                    ul.slider-tech__list
+                      each tech in techs 
+                        li.slider-tech__item
+                          .slider-tech__text
+                            p #{tech}
+
+                  .title-content.slider-pages__title Сайт школы образования
+
+                  .slider-pages__info 
+                    p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
+
+                  .slider-pages__wrap-link
+                    a(href='#').slider-pages__link Посмотреть сайт
+              li.slider-pages__item
+                .slider-pages__num 2
+                .slider-pages__screen
+                  +image(`content/preview/car.jpg`, 'slider-pages__img-screen')
+                  .slider-pages__var
+                    .slider-pages__var-content
+                      - var pages = ['autumn.jpg', 'autumn.jpg', 'autumn.jpg', 'autumn.jpg','car.jpg', 'fantasy.jpg', 'mountains.jpg']
+                        ul.slider-pages__var-list
+                          each page in pages
+                            li.slider-pages__var-item
+                              +image(`content/preview/${page}`, 'slider-pages__img-page')
+                              //- .slider-pages__mask
 
                     .slider-pages__btns
                       a(href='#').btn-pointer.slider-pages__btn-nav.slider-pages__nav_next
@@ -164,6 +201,7 @@ body
                   .slider-pages__wrap-link
                     a(href='#').slider-pages__link Посмотреть сайт
 
+              
 
 
     section.section.comments
@@ -173,9 +211,9 @@ body
           .slider-comments
             .slider-comments__btns
               a(href='#').btn-pointer.slider-comments__btn-nav.slider-comments__btn-nav_next
-                +icon('arrow-down', 'btn-pointer__prev')
+                +icon('arrow-down', 'slider-comments__btn btn-pointer__prev')
               a(href='#').btn-pointer.slider-comments__btn-nav.slider-comments__btn-nav_next
-                +icon('arrow-down', 'btn-pointer__next')
+                +icon('arrow-down', 'slider-comments__btn btn-pointer__next')
 
 
             .slider-comments__wrap

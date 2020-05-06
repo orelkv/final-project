@@ -107,17 +107,16 @@ html(lang="ru")
                     li.skills__item.skills-row
                       h4.skills-row__title #{item[0]}
                       ul.skills-row__list
-                        svg.skill__gradient
-
+                        svg(width='0' height='0')
+                          defs
+                            lineargradient#skill-gradient
+                              stop(offset='0%' stop-color='#243fe5')             
+                              stop(offset='100%' stop-color='#4d87ee')
 
                         each skill in item[1]
                           li.skills-row__item
                             .skill
                               svg.skill__icon(viewBox='0 0 154 154')
-                                defs
-                                  lineargradient#skill-gradient 
-                                    stop(offset='0%' stop-color='#243fe5')              
-                                    stop(offset='100%' stop-color='#4d87ee')
                                 circle.skill__circle(stroke='#e9e9e9' stroke-width='10' fill='transparent' r='67' cx='77' cy='77')         
                                 circle.skill__circle.skill__circle_top(stroke='url(#skill-gradient' stroke-width='20' fill='transparent' r='67' cx='77' cy='77' transform= 'rotate(180 77 77)')         
                               h4.skill__title #{skill}

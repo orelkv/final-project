@@ -10,7 +10,7 @@
     display: inline-flex;
     justify-content: space-between;
     width: 100%;
-    margin-bottom: 40px;
+    margin-bottom: 10%;
   }
 
   &__input-wrap {
@@ -36,14 +36,13 @@
   }
 
   &__text {
-    margin-bottom: 22px;
+    margin-bottom: 30px;
     opacity: 0.3;
     font-size: 16px;
     font-weight: 600;
     color: rgb(255, 255, 255);
     padding-left: 47px;
-    // opacity: 0;
-    display: none;
+    opacity: 0;
   }
 
   &__input {
@@ -58,20 +57,6 @@
     line-height: 2;
     padding: 10px 48px;
     position: relative;
-
-    // &:before {
-    //   content: "";
-    //   width: 30px;
-    //   height: 30px;
-    //   position: absolute;
-    //   display: block;
-    //   top: 0;
-    //   left: 0;
-    //   z-index: 999;
-    //   opacity: .3;
-    // }
-
-  
 
     &::placeholder {
       color: rgb(255, 255, 255);
@@ -88,8 +73,8 @@
     &:focus {
       .contacts-form__text {
         opacity: 1;
-        display: block;
       }
+
       .contacts-form__label:before {
         background: svg-load('', fill=#ffffff) center center / cover no-repeat;
       }
@@ -115,6 +100,8 @@
 
   &__label_message:before {
     background: svg-load('message.svg', fill=#ffffff) center center / cover no-repeat;
+    top: 63px;
+    bottom: initial;
   }
 
 }

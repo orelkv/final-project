@@ -38,37 +38,35 @@
   }
 
   &__list {
-    position: relative;
     display: inline-flex;
     width: 100%;
+    transform: translateX(-100%)
   }
 
   &__item {
-    display: inline-flex;
-    padding-right: 10%;
+    padding: 0 3% 0 13%;
     width: 50%;
     flex: 0 0 auto;
 
-    &:before {
-      content: "";
-      display: inline-block;
-      margin-right: 20px;
-      background: svg-load('quote.svg', fill=#ffffff) center center / cover no-repeat;
-      width: 75px;
-      height: 63px;
-      opacity: 0.1;
-      margin-left: 7%;
-    }
-
-    &:last-child {
-      padding-right: 0;
-    }
   }
 
   &__item-wrap {
     display: flex;
     flex-direction: column;
-    flex: 1;
+    position: relative;
+
+      
+      &:before {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      background: svg-load('quote.svg', fill=#ffffff) center center / cover no-repeat;
+      width: 75px;
+      height: 63px;
+      top: 0;
+      left: -100px;
+      opacity: 0.1;
+    }
   }
 
   &__text {
@@ -78,7 +76,7 @@
     line-height: 1.88;
     color: #ffffff;
     display: inline-flex;
-    margin-bottom: 24px;
+    margin-bottom: 7%;
   }
 
   &__avatar {

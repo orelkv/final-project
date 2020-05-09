@@ -4,8 +4,28 @@
   align-items: center;
   justify-content: space-between;
 
+  @include phones {
+    padding: 15% 0;
+  }
+  
+
   &__menu {
     margin: 0 1%;
     width: 100%;
+    flex: 1;
+  }
+
+  &__hamburger {
+    display: none;
+    @include tablets {
+      display: block;
+      margin-left:  90px;
+    } 
+  }
+
+  &__socials {
+    @include phones {
+      display: none;
+    }
   }
 }

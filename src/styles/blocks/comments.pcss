@@ -1,5 +1,4 @@
 .comments {
-  background: url('../images/content/comments-fon.jpg')  center center / cover no-repeat;
 
   &__container {
     display: flex;
@@ -10,9 +9,17 @@
   &__title {
     margin-bottom: 6%;
     width: 39%;
+    @include phones {
+      width: initial;
+      text-align: center;
+    }
   }
 
   &__content {
-    width: 67%;
+    width: 84%;
+
+    @include tablets {
+      width: initial;
+    }
   }
 }

@@ -2,6 +2,11 @@
   display: flex;
   flex-direction: column;
   width: 35%;
+
+  @include tablets {
+    width: initial;
+    margin-bottom: 5%;
+  }
   
 
   &__text {

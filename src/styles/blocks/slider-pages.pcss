@@ -5,7 +5,6 @@
   &__list {
     display: inline-flex;
     width: 100%;
-    transform: translateX(-100%)
   }
 
   &__item {
@@ -14,32 +13,62 @@
     justify-content: space-between;
     flex-shrink: 0;
     position: relative;
-    align-items: center
+    align-items: center;
+
+    @include tablets {
+    flex-direction: column;
+    justify-content: center;
+    position: static;
+    }
   }
 
-  &__previews {
+  &__wrap {
     position: relative;
-    height: 100%;
-  }
 
+    @include tablets {
+      margin-bottom: 2%;
+      padding-right: 3%;
+    }
+    @include phones {
+      padding-right: 0;
+    }
+  }
+  
   &__num {
     position: absolute;
-    right: 23%;
-    top: 50%;
-    transform: translateY(-50%);
+    right: -10px;
+    top: 13%;
     font-size: 400px;
     font-weight: 800;
     font-style: normal;
     line-height: 1;
     color: #e6e6e6;
     font-family: "Open Sans", Helvetica, sans-serif;
+
+    @include desktop {
+      font-size: 300px;
+      top: 5%;
+      line-height: 0.6;
+    }
+
+    @include phones {
+      display: none;
+    }
   }
 
   &__screen {
     position: relative;
-    width: 65%;
+    width: 83%;
     display: flex;
-    align-items: center
+    align-items: center;
+
+    @include tablets {
+    width: 93%;
+    }
+
+    @include phones {
+      width: 100%;
+    }
   }
 
   &__var {
@@ -48,20 +77,31 @@
     bottom: 10%;
     display: inline-flex;
     justify-content: flex-end;
-    max-height: 100px;
     z-index: 9999;
-    width: 75%;
+    width: 676px;
+
+    @include desktop {
+      width: 100%;
+    }
+    @include phones {
+      right: 0;
+      bottom: 0;
+      height: 100px;
+    }
   }
 
   &__var-content {
     width: 100%;
     overflow: hidden;
     display: inline-flex;
+
+    @include phones {
+       display: none; 
+    }
   }
 
   &__var-list {
     display: inline-flex;
-    transform:  translateX(-25%);
   }
 
   &__var-item {
@@ -69,6 +109,10 @@
     cursor: pointer;
     flex-shrink: 0;
     position: relative;
+
+    @include desktop {
+      width: calc(100%/3);
+    }
 
     &:before {
       content: "";
@@ -119,14 +163,33 @@
   }
 
   &__desk {
-    width: 24%;
+    width: 310px;
     display: flex;
     flex-direction: column;
+    flex-shrink: 0;
+
+    @include tablets {
+      width: 62%;
+      flex-shrink: initial;
+      align-items: center;
+      text-align: center;      
+    }
+
+    @include phones {
+      text-align: left;
+      align-items: flex-start;
+      align-self: flex-start;
+      width: 100%;
+    }
   }
 
   &__title {
     line-height: 1.6;
     margin-bottom: 10%;
+
+    @include tablets {
+    margin-bottom: 2%;
+    }
   }
 
   &__info {
@@ -138,6 +201,10 @@
     line-height: 1.88;
     color: rgba(51, 60, 73, 0.7);
     margin-bottom: 10%;
+
+    @include tablets {
+    margin-bottom: 4%;
+    }
   }
 
   &__wrap-link {

@@ -3,18 +3,38 @@
   flex-direction: column;
   font-style: normal;
   font-family: "Open Sans", Helvetica, sans-serif;
+
+  @include tablets {
+    text-align: center;
+  }
+  @include tablets {
+    text-align: left;
+  }
   
   &__content {
     margin-bottom: 9%;
+    width: 70%;
+    
+    @include tablets {
+      width: 66%;
+      align-self: center;
+      margin-bottom: 4%;
+    }
+    @include phones {
+      margin-bottom: 0;
+      width: initial;
+    }
   }
   
   &__title {
     margin-bottom: 7%;
     color: #100022;
+    @include phones {
+      margin-bottom: 2%;
+    }
   }
   
   &__text {
-    width: 70%;
     opacity: 0.5;
     font-size: 16px;
     font-weight: 600;
@@ -24,10 +44,14 @@
 
   &__tech {
     align-self: flex-end;
+
+    @include tablets {
+      align-self: center;
+    }
   }
 
   &__list {
     display: flex;
-    flex-direction: column;    
+    flex-direction: column;       
   }   
 }

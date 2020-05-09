@@ -1,5 +1,8 @@
 .user-prolog {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   &__text {
     text-align: right;
@@ -12,6 +15,11 @@
     top: 0;
     left: -65%;
     line-height: 1.7;
+
+    @include laptop {
+      position: static;
+      margin-bottom: 15px;
+    }
   }
 
   &__title {

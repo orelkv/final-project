@@ -1,28 +1,53 @@
 .about {
-  background: url('../images/content/hero-fon.jpg') center center / cover no-repeat;
+  background-color: #09021d;
   color: #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;
+
 
   &__container {
     position: relative;
     display: inline-flex;
     justify-content: center;
     align-items: center;
+
   }
 
   &__content {
     display: inline-flex;
     justify-content: center;
     max-width: 950px;
+
+    @include laptop {
+      justify-content: space-between;
+    }
+    @include phones {
+      flex-direction: column;
+    }
   }
 
   &__left {
     margin-right: 18%;
+
+    @include laptop {
+    margin-right: 0;
+    }
+    @include phones {
+    margin-bottom: 8%;
+    }
   }
 
   &__right {
     flex: 1;
+
+    @include laptop {
+      flex: initial;
+      width: 52%;
+    }
+
+    @include phones {
+      width: initial;
+    }
   }
 }

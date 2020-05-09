@@ -9,6 +9,29 @@
     width: 31px;
     height: 25px;
 
+    &_footer {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      border: solid 1px #534d5e;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+        .socials__icon {
+          width: 28px;
+          height: 25px;
+      }
+    }
+
+    &:hover {
+      border-color: #ff9a00;
+
+      .socials__icon {
+        fill: #ff9a00;
+      }
+    }
+
     &:last-child {
       margin-right: 0;
     }
@@ -17,9 +40,5 @@
   &__icon {
     fill: #534d5e;
     display: block;
-
-    &:hover {
-      fill: #ff9a00;
-    }
   }
 }

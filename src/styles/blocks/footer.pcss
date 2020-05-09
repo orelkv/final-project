@@ -14,20 +14,40 @@
     transform: translateY(-50%);
     display: flex;
     justify-content: space-between;
+
+    @include phones {
+      flex-direction: column;
+      justify-content: initial;
+    }
   }
 
   &__left {
     width: 25%;
+
+    @include tablets {
+    width: 40%;
+    }
+    @include phones {
+      width: 100%;
+    }
   }
 
   &__right {
     display: flex;
     flex-direction: column;
     width: 66%;
+
+    @include desktop {
+    width: 78%;
+    }
+    @include phones {
+      width: 100%;
+    }
   }
 
   &__menu {
     margin-bottom: 55px;
+    display: block;
 
     .pages-menu__list {
       margin: 0 0;
@@ -38,6 +58,14 @@
   &__details {
     display: flex;
     justify-content: space-between;
+
+    @include tablets {
+      flex-direction: column;
+      justify-content: initial;
+    }
   }
 
+  &__socials {
+    display: inline-flex;
+  }
 }

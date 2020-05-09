@@ -9,8 +9,28 @@ html(lang="ru")
     title Портфолио | Главная страница
   body
     .wrapper
-      .welcome-section  
-        .section.hero
+      .welcome-section.parallax
+        .parallax__layer(data-speed="0.1")
+          +image('paralax-hero/layer1.png', 'parallax__img')
+        .parallax__layer(data-speed="0.2")
+          +image('paralax-hero/layer2.png', 'parallax__img')
+        .parallax__layer(data-speed="0.3")
+          +image('paralax-hero/layer3.png', 'parallax__img')
+        .parallax__layer(data-speed="0.35")
+          +image('paralax-hero/layer4.png', 'parallax__img')
+        .parallax__layer(data-speed="0.4")
+          +image('paralax-hero/layer5.png', 'parallax__img')
+        .parallax__layer(data-speed="0.45")
+          +image('paralax-hero/layer6.png', 'parallax__img')
+        .parallax__layer(data-speed="0.45")
+          .parallax__fon
+        .parallax__layer(data-speed="0.45")
+          +image('paralax-hero/filter.png', 'parallax__img')
+        .parallax__layer(data-speed="0.5")
+          +image('paralax-hero/sparks.png', 'parallax__img')
+        
+        
+        .section.hero#hero
 
           .container.hero__container
             header.header
@@ -19,11 +39,19 @@ html(lang="ru")
               
               .header__menu
                 nav.pages-menu
-                  - var menu = ['Главная', 'Обо мне', 'Навыки', 'Работы', 'Отзывы', 'Связаться']
+                  -
+                    var menu = [
+                      ['Главная', '#hero'],
+                      ['Обо мне', '#about'],
+                      ['Навыки', '#values'],
+                      ['Работы', '#works'],
+                      ['Отзывы', '#comments'],
+                      ['Связаться', '#connect']
+                    ]
                   ul.pages-menu__list 
                     each item in menu
                       li.pages-menu__item
-                        a(href='#').pages-menu__link #{item}
+                        a(href=`${item[1]}`).pages-menu__link #{item[0]}
               
               .header__socials
                 .socials
@@ -39,6 +67,9 @@ html(lang="ru")
                       li.socials__item
                         a(href=`${item[1]}`).socials__link
                           +icon(`${item[0]}`, 'socials__icon')
+              .header__hamburger
+                .hamburger
+                  .hamburger__elem
 
             .hero__content
               .user-prolog
@@ -53,7 +84,7 @@ html(lang="ru")
 
 
 
-        section.section.about       
+        section.section.about#about     
           .container.about__container
             .about__content
               .about__left
@@ -87,7 +118,7 @@ html(lang="ru")
 
 
 
-      section.section.values
+      section.section.values#values
         .container.values__container
           .values__left
             .music
@@ -112,7 +143,7 @@ html(lang="ru")
                 ul.skills__list
                   -
                     var items = [
-                      ['Frontend', ['HTML5', 'CSS3', 'Javascript', 'jQuery и Vue.js']],
+                      ['Front-end', ['HTML5', 'CSS3', 'Javascript', 'jQuery и Vue.js']],
                       ['Workflow', ['GIT', 'Terminal', 'Gulp', 'Webpack']]
                     ]
                   each item in items
@@ -129,169 +160,154 @@ html(lang="ru")
 
 
 
-      section.section.works
+      section.section.works#works
         .container.works__container
 
           h2.title-section.works__title Мои работы
 
           .works__content
             .slider-pages
+              - var pagesWork = ['autumn.jpg', 'autumn.jpg', 'autumn.jpg', 'autumn.jpg','car.jpg', 'fantasy.jpg', 'mountains.jpg']
               ul.slider-pages__list
-                li.slider-pages__item
-                  .slider-pages__num 2
-                  .slider-pages__screen
-                    +image(`content/preview/mountains.jpg`, 'slider-pages__img-screen')
-                    .slider-pages__var
-                      .slider-pages__var-content
-                        - var pages = ['autumn.jpg', 'autumn.jpg', 'autumn.jpg', 'autumn.jpg','car.jpg', 'fantasy.jpg', 'mountains.jpg']
-                          ul.slider-pages__var-list
-                            each page in pages
-                              li.slider-pages__var-item
-                                +image(`content/preview/${page}`, 'slider-pages__img-page')
+                each item in pagesWork
+                  li.slider-pages__item
+                    .slider-pages__wrap
+                      .slider-pages__num 2
+                      .slider-pages__screen
+                        +image(`content/preview/${item}`, 'slider-pages__img-screen')
+                        .slider-pages__var
+                          .slider-pages__var-content
+                            - var pages = ['autumn.jpg', 'autumn.jpg', 'autumn.jpg', 'autumn.jpg','car.jpg', 'fantasy.jpg', 'mountains.jpg']
+                              ul.slider-pages__var-list
+                                each page in pages
+                                  li.slider-pages__var-item
+                                    +image(`content/preview/${page}`, 'slider-pages__img-page')
 
-                    .slider-pages__btns
-                      a(href='#').btn-pointer.slider-pages__btn-nav.slider-pages__nav_next
-                        +icon('arrow-down', 'btn-pointer__next')
-                      a(href='#').btn-pointer.slider-pages__btn-nav.slider-pages__nav_prev
-                        +icon('arrow-down', 'btn-pointer__prev')
-
-
-                  .slider-pages__desk
-                    .slider-pages__tech.slider-tech
-                      - var techs = ['HTML', 'CSS', 'Javascript']
-                      ul.slider-tech__list
-                        each tech in techs 
-                          li.slider-tech__item
-                            .slider-tech__text
-                              p #{tech}
-
-                    .title-content.slider-pages__title Сайт школы образования
-
-                    .slider-pages__info 
-                      p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
-
-                    .slider-pages__wrap-link
-                      a(href='#').slider-pages__link Посмотреть сайт
-                li.slider-pages__item
-                  .slider-pages__num 2
-                  .slider-pages__screen
-                    +image(`content/preview/car.jpg`, 'slider-pages__img-screen')
-                    .slider-pages__var
-                      .slider-pages__var-content
-                        - var pages = ['autumn.jpg', 'autumn.jpg', 'autumn.jpg', 'autumn.jpg','car.jpg', 'fantasy.jpg', 'mountains.jpg']
-                          ul.slider-pages__var-list
-                            each page in pages
-                              li.slider-pages__var-item
-                                +image(`content/preview/${page}`, 'slider-pages__img-page')
-
-                      .slider-pages__btns
-                        a(href='#').btn-pointer.slider-pages__btn-nav.slider-pages__nav_next
-                          +icon('arrow-down', 'btn-pointer__next')
-                        a(href='#').btn-pointer.slider-pages__btn-nav.slider-pages__nav_prev
-                          +icon('arrow-down', 'btn-pointer__prev')
+                          .slider-pages__btns
+                            a(href='#').btn-pointer.slider-pages__btn-nav.slider-pages__nav_next
+                              +icon('arrow-down', 'btn-pointer__next')
+                            a(href='#').btn-pointer.slider-pages__btn-nav.slider-pages__nav_prev
+                              +icon('arrow-down', 'btn-pointer__prev')
 
 
-                  .slider-pages__desk
-                    .slider-pages__tech.slider-tech
-                      - var techs = ['HTML', 'CSS', 'Javascript']
-                      ul.slider-tech__list
-                        each tech in techs 
-                          li.slider-tech__item
-                            .slider-tech__text
-                              p #{tech}
+                    .slider-pages__desk
+                      .slider-pages__tech.slider-tech
+                        - var techs = ['HTML', 'CSS', 'Javascript']
+                        ul.slider-tech__list
+                          each tech in techs 
+                            li.slider-tech__item
+                              .slider-tech__text
+                                p #{tech}
 
-                    .title-content.slider-pages__title Сайт школы образования
+                      .title-content.slider-pages__title Сайт школы образования
 
-                    .slider-pages__info 
-                      p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
+                      .slider-pages__info 
+                        p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
 
-                    .slider-pages__wrap-link
-                      a(href='#').slider-pages__link Посмотреть сайт
-
+                      .slider-pages__wrap-link
+                        a(href='#').slider-pages__link Посмотреть сайт
                 
 
+      .comments-section.parallax-music
+        .parallax-music__layer(data-speed="0.1")
+          +image('paralax-music/fon.png', 'parallax-music__img')
+        .parallax-music__layer(data-speed="0.1")
+          +image('paralax-music/smoke.png', 'parallax-music__img')
+        .parallax-music__layer(data-speed="0.1")
+          +image('paralax-music/drums.png', 'parallax-music__img')
+        .parallax-music__layer(data-speed="0.1")
+          +image('paralax-music/guitarist.png', 'parallax-music__img')
+        .parallax-music__layer(data-speed="0.1")
+          +image('paralax-music/filter.png', 'parallax-music__img')
 
-      section.section.comments
-        .container.comments__container
-          h2.title-section.comments__title Что обо мне говорят
-          .comments__content
-            .slider-comments
-              .slider-comments__btns
-                a(href='#').btn-pointer.slider-comments__btn-nav.slider-comments__btn-nav_next
-                  +icon('arrow-down', 'slider-comments__btn btn-pointer__prev')
-                a(href='#').btn-pointer.slider-comments__btn-nav.slider-comments__btn-nav_next
-                  +icon('arrow-down', 'slider-comments__btn btn-pointer__next')
+        section.section.comments#comments
+          .container.comments__container
+            h2.title-section.comments__title Что обо мне говорят
+            .comments__content
+              .slider-comments
+                .slider-comments__btns
+                  button.btn-pointer.slider-comments__btn-nav.slider-comments__btn-nav_prev
+                    +icon('arrow-down', 'slider-comments__btn btn-pointer__prev')
+                  button.btn-pointer.slider-comments__btn-nav.slider-comments__btn-nav_next
+                    +icon('arrow-down', 'slider-comments__btn btn-pointer__next')
 
+                .slider-comments__wrap
+                  -
+                    var avatar = [
+                      ['user.jpg', 'Ковальчук Дмитрий', 'Основатель loftschool', 'Фото Сергея'],
+                      ['user.jpg', 'Иванов Сергей', 'Преподаватель loftschool', 'Фото Сергея'],
+                      ['user.jpg', 'Петров Алексей', 'Глава совета директоров loftschool', 'Фото Сергея'],
+                      ['user.jpg', 'Жорж', 'Администратор loftschool', 'Фото Сергея'],
+                    ]
 
-              .slider-comments__wrap
-                -
-                  var avatar = [
-                    ['user.jpg', 'Ковальчук Дмитрий', 'Основатель loftschool', 'Фото Сергея'],
-                    ['user.jpg', 'Иванов Сергей', 'Преподаватель loftschool', 'Фото Сергея'],
-                    ['user.jpg', 'Петров Алексей', 'Глава совета директоров loftschool', 'Фото Сергея'],
-                    ['user.jpg', 'Жорж', 'Администратор loftschool', 'Фото Сергея'],
-                  ]
+                  ul.slider-comments__list
+                    each item in avatar
+                      li.slider-comments__item
+                        .slider-comments__item-wrap
+                          .slider-comments__text
+                            p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
 
-                ul.slider-comments__list
-                  each item in avatar
-                    li.slider-comments__item
-                      .slider-comments__item-wrap
-                        .slider-comments__text
-                          p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-
-                        .slider-comments__avatar
-                          .slider-comments__photo
-                            .avatar
-                              +image(`content/${item[0]}`, 'avatar__img', `${item[3]}`)
-                          .slider-comments__info
-                            h4.user-name.slider-comments__name #{item[1]}
-                            .user__prof #{item[2]}
-    
-
-
-      section.section.connect
-        .container.connect__container
-          h2.title-section.connect__title Связаться со мной
-          .connect__content
-            form.contacts-form(action="post")
-              .contacts-form__row
-                .contacts-form__input-wrap
-                  label.contacts-form__label.contacts-form__label_name
-                    span.contacts-form__text Введите Ваше имя
-                    input(type="text" id='name' name="name" required placeholder='Введите Ваше имя').contacts-form__input.contacts-form__input_name 
-                .contacts-form__input-wrap
-                  label.contacts-form__label.contacts-form__label_email
-                    span.contacts-form__text Введите Ваш email
-                    input(type="email" id='email' name="email" required placeholder='Введите Ваш email').contacts-form__input.contacts-form__input_email
-              
-              .contacts-form__row
-                .contacts-form__input-wrap.contacts-form__input-wrap_textarea
-                  label.contacts-form__label.contacts-form__label_message
-                    span.contacts-form__text Сообщение к письму
-                    textarea(id="message" name="message" required placeholder='Сообщение к письму').contacts-form__input.contacts-form__input_message
-
-              button(type='submit').btn Отправить
+                          .slider-comments__avatar
+                            .slider-comments__photo
+                              .avatar
+                                +image(`content/${item[0]}`, 'avatar__img', `${item[3]}`)
+                            .slider-comments__info
+                              h4.user-name.slider-comments__name #{item[1]}
+                              .user__prof #{item[2]}
 
 
 
-      footer.section.footer
+        section.section.connect#connect
+          .container.connect__container
+            h2.title-section.connect__title Связаться со мной
+            .connect__content
+              form.contacts-form(action="post")
+                .contacts-form__row
+                  .contacts-form__input-wrap
+                    label.contacts-form__label.contacts-form__label_name
+                      span.contacts-form__text Введите Ваше имя
+                      input(type="text" id='name' name="name" required placeholder='Введите Ваше имя').contacts-form__input.contacts-form__input_name 
+                  .contacts-form__input-wrap
+                    label.contacts-form__label.contacts-form__label_email
+                      span.contacts-form__text Введите Ваш email
+                      input(type="email" id='email' name="email" required placeholder='Введите Ваш email').contacts-form__input.contacts-form__input_email
+                
+                .contacts-form__row
+                  .contacts-form__input-wrap.contacts-form__input-wrap_textarea
+                    label.contacts-form__label.contacts-form__label_message
+                      span.contacts-form__text Сообщение к письму
+                      textarea(id="message" name="message" required placeholder='Сообщение к письму').contacts-form__input.contacts-form__input_message
+
+                button(type='submit').btn Отправить
+
+
+
+      footer.section.footer#footer
         .container.footer__container
           .footer__content
             .footer__left
               .main-info
                 .main-info__data © 2019
                 .main-info__text
-                  h4.user__name.main-info__name Алексей<br>Орлов
+                  h4.user__name.main-info__name Алексей Орлов
                   .main-info__text-about Личный сайт веб-разработчика
                   
             .footer__right
               .footer__row.footer__menu
-                nav.pages-menu
-                  - var menu = ['Главная', 'Обо мне', 'Навыки', 'Работы', 'Отзывы', 'Связаться']
+                nav.pages-menu.pages-menu_footer
+                  -
+                    var menu = [
+                      ['Главная', '#hero'],
+                      ['Обо мне', '#about'],
+                      ['Навыки', '#values'],
+                      ['Работы', '#works'],
+                      ['Отзывы', '#comments'],
+                      ['Связаться', '#connect']
+                    ]
                   ul.pages-menu__list 
                     each item in menu
                       li.pages-menu__item
-                        a(href='#').pages-menu__link #{item}
+                        a(href=`${item[1]}`).pages-menu__link #{item[0]}
               
               .footer__row.footer__details
                 .details
@@ -300,7 +316,7 @@ html(lang="ru")
                     - var icons = ['insta', 'vk', 'github']
                       ul.socials__list
                         each item in icons
-                          li.socials__item
+                          li.socials__item.socials__item_footer
                             a(href='#').socials__link
                               +icon(item, 'socials__icon')
               
@@ -308,7 +324,3 @@ html(lang="ru")
                   .citation__text
                     p Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
                   span.citation__author Martin Golding
-
-
-
-                

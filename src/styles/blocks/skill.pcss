@@ -1,7 +1,6 @@
   .skill {
-    width: 154px;
-    height: 154px;
     position: relative;
+    font-size: 0;
 
     &__title {
       position: absolute;
@@ -9,16 +8,18 @@
       left: 50%;
       opacity: 0.5;  
       text-align: center;
-      transform: translate(-50%, -50%);  
+      font-size: 18px;
+      transform: translate(-50%, -50%); 
     }
 
     &__circle_top {
       stroke-dasharray: 422;
       stroke-dashoffset: 50;
-      ;
     }
+    
     &__gradient {
       position: absolute;
       visibility: hidden;
     }
   }
+

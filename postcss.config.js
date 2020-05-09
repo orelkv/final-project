@@ -25,7 +25,7 @@ module.exports = {
     require("postcss-pxtorem")({        // для перевода все в rem
       rootValue: 16,                            // базовый размер
       propList: ["*", "!*border*"],         // преобразовывать все свойства, кроме того что содержит border
-      selectorBlackList: [/^html$/]         // не обработывать тег html
+      selectorBlackList: [/^html$/, /^.container$/]         // не обработывать тег html
     })
   ]
 };

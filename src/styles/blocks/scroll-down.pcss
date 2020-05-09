@@ -6,6 +6,10 @@
   font-weight: 600;
   display: inline-flex;
 
+  @include tablets {
+    display: none;
+  }
+
   &:hover {
     color: #dc9322;
     .scroll-down__icon {

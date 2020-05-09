@@ -3,13 +3,31 @@
   position: relative;
   font-family: "Open Sans", Helvetica, sans-serif;
   font-style: normal;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   &__btns {
     position: absolute;
-    top: -55%;
-    left: 50%;
+    top: -130px;
+    right: 40%;
     transform: translateX(-9%);
     display: flex;
+    
+    @include desktop {
+      right: 31%;
+      top: -110px;
+    }
+    @include laptop {
+    right: 25%;
+    }
+    @include tablets {
+    right: 31%;
+    }
+    @include phones {
+      position: static;
+      margin-bottom: 10%;
+    }
   }
 
   &__btn-nav {
@@ -40,13 +58,19 @@
   &__list {
     display: inline-flex;
     width: 100%;
-    transform: translateX(-100%)
   }
 
   &__item {
-    padding: 0 3% 0 13%;
+    padding: 0 3% 0 15%;
     width: 50%;
     flex: 0 0 auto;
+    @include tablets {
+    padding: 0 9%;
+    }
+    @include phones {
+      width: 100%;
+      padding: 0 0 0 12%;
+    }
 
   }
 
@@ -64,8 +88,14 @@
       width: 75px;
       height: 63px;
       top: 0;
-      left: -100px;
+      left: -90px;
       opacity: 0.1;
+
+      @include tablets {
+      width: 37px;
+      height: 37px;         
+      left: -45px;
+      }
     }
   }
 

@@ -39,7 +39,7 @@ html(lang="ru")
               
               .header__menu
                 nav.pages-menu#pages-menu(:class='{active : activeClass}')
-                  .close
+                  .close(@click='removeClass')
                     +icon('close', 'close__icon')
                   -
                     var menu = [
@@ -53,7 +53,7 @@ html(lang="ru")
                   ul.pages-menu__list 
                     each item in menu
                       li.pages-menu__item()
-                        a(href=`${item[1]}`).pages-menu__link #{item[0]}
+                        a(href=`${item[1]}` @click='removeClass').pages-menu__link #{item[0]}
                   
                   .socials
                     -
@@ -86,7 +86,7 @@ html(lang="ru")
               
               
               .header__hamburger
-                .hamburger#hamburger(@click='addClass()')
+                .hamburger#hamburger(@click.stop='addClass')
                   .hamburger__elem
 
             .hero__content
@@ -239,13 +239,19 @@ html(lang="ru")
               .footer__row.footer__details
                 .details
                   .details__text Этот сайт я сделал в рамках обучения в Школе онлайн образования Loftschool
-                  .socials.footer__socials
-                    - var icons = ['insta', 'vk', 'github']
-                      ul.socials__list
-                        each item in icons
-                          li.socials__item.socials__item_footer
-                            a(href='#').socials__link
-                              +icon(item, 'socials__icon')
+                  .socials.socials_footer
+                    -
+                      var icons = [
+                        ['insta', 'https://www.instagram.com/or_alex/'],
+                        ['vk', '#'],
+                        ['github', 'https://github.com/orelkv']
+                      ]
+
+                    ul.socials__list
+                      each item in icons
+                        li.socials__item
+                          a(href=`${item[1]}`).socials__link
+                            +icon(`${item[0]}`, 'socials__icon')
               
                 .citation
                   .citation__text

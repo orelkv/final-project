@@ -1,7 +1,7 @@
 import Vue from 'vue';
 
 new Vue ({
-  el: '#hamburger',
+  el: '#header',
   data: {
     activeClass: 'false',
   },

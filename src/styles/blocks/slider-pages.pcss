@@ -13,42 +13,64 @@
     justify-content: space-between;
     flex-shrink: 0;
     position: relative;
-    align-items: center;
+    overflow: hidden;
 
-    @include tablets {
+
+    @include laptop {
     flex-direction: column;
     justify-content: center;
     position: static;
+    align-items: center;
     }
   }
 
   &__wrap {
     position: relative;
 
-    @include tablets {
+    @include laptop {
       margin-bottom: 2%;
-      padding-right: 3%;
     }
     @include phones {
       padding-right: 0;
     }
+  }  
+
+  &__screen {
+    position: relative;
+    width: 86%;
+
+    @include phones {
+      width: 100%;
+    }
   }
-  
+
   &__num {
     position: absolute;
-    right: -10px;
-    top: 13%;
+    right: 0;
+    top: 50%;
     font-size: 400px;
     font-weight: 800;
     font-style: normal;
-    line-height: 1;
-    color: #e6e6e6;
+    line-height: 0;
+    color: #e6e6e6;   
     font-family: "Open Sans", Helvetica, sans-serif;
+    
+    &:before {
+      content: attr(data-slide);
+      position: absolute;
+      top: 0;
+      right: -15px;
+      display: block;
+      @include desktop {
+        right: -8px;        
+      }
 
+    }
     @include desktop {
       font-size: 300px;
-      top: 5%;
-      line-height: 0.6;
+      top: 0;
+      line-height: 0.7;
+      transform: initial;
     }
 
     @include phones {
@@ -56,44 +78,38 @@
     }
   }
 
-  &__screen {
+  &__img-screen {
     position: relative;
-    width: 83%;
-    display: flex;
-    align-items: center;
-
-    @include tablets {
-    width: 93%;
-    }
-
-    @include phones {
-      width: 100%;
-    }
   }
-
+  
   &__var {
     position: absolute;
-    right: -50px;
+    right: -50PX;
     bottom: 10%;
     display: inline-flex;
     justify-content: flex-end;
-    z-index: 9999;
-    width: 676px;
+    z-index: 6666;
+    height: 100PX;
 
-    @include desktop {
-      width: 100%;
-    }
     @include phones {
       right: 0;
       bottom: 0;
-      height: 100px;
     }
   }
 
   &__var-content {
-    width: 100%;
     overflow: hidden;
     display: inline-flex;
+    width: calc(178px*4);
+    
+    @include desktop {
+      width: calc(178px*3);
+    }
+
+    @include tablets-min {
+      width: calc(178px*2);
+    }
+
 
     @include phones {
        display: none; 
@@ -102,16 +118,22 @@
 
   &__var-list {
     display: inline-flex;
+    justify-content: flex-end;
+    width: 100%;
   }
 
   &__var-item {
-    width: 25%;
+    width: calc(100%/4);
     cursor: pointer;
     flex-shrink: 0;
     position: relative;
 
     @include desktop {
       width: calc(100%/3);
+    }
+
+    @include tablets-min {
+      width: calc(100%/2);
     }
 
     &:before {
@@ -145,7 +167,7 @@
       }
     }
 
-    &_active {
+    &.active {
       &.slider-pages__var-item:after {
         display: block;
       }
@@ -153,12 +175,18 @@
   }
 
   &__btn-nav {
-    width: 50px;
-    height: 50%;
+    width: 50PX;
+    height: 50PX;
     background-color: #353e4e;
 
     &:hover {
       background-color: #5500f2;
+    }
+
+    &.none {
+      .btn-pointer__icon {
+        opacity: .3;
+      }
     }
   }
 
@@ -168,7 +196,7 @@
     flex-direction: column;
     flex-shrink: 0;
 
-    @include tablets {
+    @include laptop {
       width: 62%;
       flex-shrink: initial;
       align-items: center;
@@ -187,7 +215,7 @@
     line-height: 1.6;
     margin-bottom: 10%;
 
-    @include tablets {
+    @include laptop {
     margin-bottom: 2%;
     }
   }
@@ -202,7 +230,7 @@
     color: rgba(51, 60, 73, 0.7);
     margin-bottom: 10%;
 
-    @include tablets {
+    @include laptop {
     margin-bottom: 4%;
     }
   }

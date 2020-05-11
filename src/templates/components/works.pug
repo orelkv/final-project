@@ -1,0 +1,82 @@
+script(type='text/x-template')#slider-pages
+  .slider-pages
+    ul.slider-pages__list
+      display(
+        :currentWorks='currentWorks'
+        :works='works'
+        :currentIndex='currentIndex'
+        @slide="handleSlide"
+        )
+
+
+script(type='text/x-template')#slider-page
+  li.slider-pages__item
+    .slider-pages__wrap
+      .slider-pages__num(:data-slide='currentIndex+1')
+      .slider-pages__screen
+        img(:src='currentWorks.photo').slider-pages__img-screen
+        preview(
+          :works='works'
+          :currentWorks='currentWorks'
+          @slide="$emit('slide', $event)"
+          :currentIndex='currentIndex'
+        )
+    info(
+      :currentWorks='currentWorks'
+      :works='works'
+    )
+
+
+script(type='text/x-template')#slider-preview
+  .slider-pages__var
+    .slider-pages__var-content
+      ul.slider-pages__var-list
+        li.slider-pages__var-item(
+          v-for='work in works' 
+          :key='work.id'
+          :class='{active: currentWorks.id === work.id}'
+          )
+          img(:src='work.photo').slider-pages__img-page
+
+    btns(
+      @slide="$emit('slide', $event)"
+      :currentIndex='currentIndex'
+      :works='works'
+    )
+
+
+script(type='text/x-template')#slider-btns
+  .slider-pages__btns
+    a(
+      @click.prevent="$emit('slide', 'next')"
+      :class='{none: currentIndex === (works.length-1)}' 
+      ).btn-pointer.slider-pages__btn-nav.slider-pages__nav_next
+      +icon('arrow-down', 'btn-pointer__icon btn-pointer__next')
+    a(
+      @click.prevent="$emit('slide', 'prev')"
+      :class='{none: currentIndex === 0}'
+      ).btn-pointer.slider-pages__btn-nav.slider-pages__nav_prev
+      +icon('arrow-down', 'btn-pointer__icon btn-pointer__prev')
+
+
+script(type='text/x-template')#slider-info
+  .slider-pages__desk
+    tags(
+      :tags='tagsArray'
+    )
+
+    .title-content.slider-pages__title {{currentWorks.title}}
+
+    .slider-pages__info 
+      p {{currentWorks.desc}}
+
+    .slider-pages__wrap-link
+      a(:href='currentWorks.link').slider-pages__link Посмотреть сайт
+
+
+script(type='text/x-template')#slider-tags
+  .slider-pages__tech.slider-tech
+    ul.slider-tech__list
+        li.slider-tech__item(v-for='tag in tags' :key='tag')
+          .slider-tech__text
+            p {{tag}}

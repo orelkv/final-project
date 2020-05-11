@@ -38,7 +38,9 @@ html(lang="ru")
                 .logo ВА
               
               .header__menu
-                nav.pages-menu
+                nav.pages-menu#pages-menu(:class='{active : activeClass}')
+                  .close
+                    +icon('close', 'close__icon')
                   -
                     var menu = [
                       ['Главная', '#hero'],
@@ -50,9 +52,23 @@ html(lang="ru")
                     ]
                   ul.pages-menu__list 
                     each item in menu
-                      li.pages-menu__item
+                      li.pages-menu__item()
                         a(href=`${item[1]}`).pages-menu__link #{item[0]}
-              
+                  
+                  .socials
+                    -
+                      var icons = [
+                        ['insta', 'https://www.instagram.com/or_alex/'],
+                        ['vk', '#'],
+                        ['github', 'https://github.com/orelkv']
+                      ]
+
+                    ul.socials__list
+                      each item in icons
+                        li.socials__item
+                          a(href=`${item[1]}`).socials__link
+                            +icon(`${item[0]}`, 'socials__icon')
+
               .header__socials
                 .socials
                   -
@@ -67,8 +83,10 @@ html(lang="ru")
                       li.socials__item
                         a(href=`${item[1]}`).socials__link
                           +icon(`${item[0]}`, 'socials__icon')
+              
+              
               .header__hamburger
-                .hamburger
+                .hamburger#hamburger(@click='addClass')
                   .hamburger__elem
 
             .hero__content
@@ -77,7 +95,7 @@ html(lang="ru")
                 h1.user-prolog__title Алексей<br>Орлов
 
             .hero__btn
-              a(href="#").scroll-down
+              a(href="#about").scroll-down
                 .scroll-down__text Скролл
                 .scroll-down__btn
                   +icon('scroll', 'scroll-down__icon')
@@ -119,6 +137,8 @@ html(lang="ru")
 
 
       section.section.values#values
+        svg.values__triangle(viewBox='0 0 1000 100' preserveAspectRatio='none')
+          polygon(points='0,0 800,100 1000,0 1000,100 0,100')
         .container.values__container
           .values__left
             .music
@@ -142,46 +162,7 @@ html(lang="ru")
           h2.title-section.works__title Мои работы
 
           .works__content
-            .slider-pages
-              - var pagesWork = ['autumn.jpg', 'autumn.jpg', 'autumn.jpg', 'autumn.jpg','car.jpg', 'fantasy.jpg', 'mountains.jpg']
-              ul.slider-pages__list
-                each item in pagesWork
-                  li.slider-pages__item
-                    .slider-pages__wrap
-                      .slider-pages__num 2
-                      .slider-pages__screen
-                        +image(`content/preview/${item}`, 'slider-pages__img-screen')
-                        .slider-pages__var
-                          .slider-pages__var-content
-                            - var pages = ['autumn.jpg', 'autumn.jpg', 'autumn.jpg', 'autumn.jpg','car.jpg', 'fantasy.jpg', 'mountains.jpg']
-                              ul.slider-pages__var-list
-                                each page in pages
-                                  li.slider-pages__var-item
-                                    +image(`content/preview/${page}`, 'slider-pages__img-page')
-
-                          .slider-pages__btns
-                            a(href='#').btn-pointer.slider-pages__btn-nav.slider-pages__nav_next
-                              +icon('arrow-down', 'btn-pointer__next')
-                            a(href='#').btn-pointer.slider-pages__btn-nav.slider-pages__nav_prev
-                              +icon('arrow-down', 'btn-pointer__prev')
-
-
-                    .slider-pages__desk
-                      .slider-pages__tech.slider-tech
-                        - var techs = ['HTML', 'CSS', 'Javascript']
-                        ul.slider-tech__list
-                          each tech in techs 
-                            li.slider-tech__item
-                              .slider-tech__text
-                                p #{tech}
-
-                      .title-content.slider-pages__title Сайт школы образования
-
-                      .slider-pages__info 
-                        p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
-
-                      .slider-pages__wrap-link
-                        a(href='#').slider-pages__link Посмотреть сайт
+            #slider-components
                 
 
       .comments-section.parallax-music
@@ -199,37 +180,7 @@ html(lang="ru")
         section.section.comments#comments
           .container.comments__container
             h2.title-section.comments__title Что обо мне говорят
-            .comments__content
-              .slider-comments
-                .slider-comments__btns
-                  button.btn-pointer.slider-comments__btn-nav.slider-comments__btn-nav_prev
-                    +icon('arrow-down', 'slider-comments__btn btn-pointer__prev')
-                  button.btn-pointer.slider-comments__btn-nav.slider-comments__btn-nav_next
-                    +icon('arrow-down', 'slider-comments__btn btn-pointer__next')
-
-                .slider-comments__wrap
-                  -
-                    var avatar = [
-                      ['user.jpg', 'Ковальчук Дмитрий', 'Основатель loftschool', 'Фото Сергея'],
-                      ['user.jpg', 'Иванов Сергей', 'Преподаватель loftschool', 'Фото Сергея'],
-                      ['user.jpg', 'Петров Алексей', 'Глава совета директоров loftschool', 'Фото Сергея'],
-                      ['user.jpg', 'Жорж', 'Администратор loftschool', 'Фото Сергея'],
-                    ]
-
-                  ul.slider-comments__list
-                    each item in avatar
-                      li.slider-comments__item
-                        .slider-comments__item-wrap
-                          .slider-comments__text
-                            p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-
-                          .slider-comments__avatar
-                            .slider-comments__photo
-                              .avatar
-                                +image(`content/${item[0]}`, 'avatar__img', `${item[3]}`)
-                            .slider-comments__info
-                              h4.user-name.slider-comments__name #{item[1]}
-                              .user__prof #{item[2]}
+            .comments__content#comments__content
 
 
 

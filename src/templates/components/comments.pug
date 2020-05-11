@@ -1,0 +1,43 @@
+script(type='text/x-template')#slider-comments
+  .slider-comments
+    btn
+
+    slider(
+      :comments='comments'
+      :currentComments='currentComments'
+    )
+
+
+script(type='text/x-template')#slider-btn
+  .slider-comments__btns
+    button.btn-pointer.slider-comments__btn-nav.slider-comments__btn-nav_prev
+      +icon('arrow-down', 'slider-comments__btn btn-pointer__prev')
+    button.btn-pointer.slider-comments__btn-nav.slider-comments__btn-nav_next
+      +icon('arrow-down', 'slider-comments__btn btn-pointer__next')
+
+
+script(type='text/x-template')#slider
+  .slider-comments__wrap
+    ul.slider-comments__list
+      display(
+        :comments='comments'
+        :currentComments='currentComments'
+      )
+
+
+script(type='text/x-template')#slider-display
+  li.slider-comments__item.carousel-cell(
+    v-for='comment in comments'
+    :key='comment.id'
+  )
+    .slider-comments__item-wrap
+      .slider-comments__text
+        p {{comment.text}}
+
+      .slider-comments__avatar
+        .slider-comments__photo
+          .avatar
+            img(:src=`comment.photo`).avatar__img
+        .slider-comments__info
+          h4.user-name.slider-comments__name {{comment.name}}
+          .user__prof {{comment.occ}}

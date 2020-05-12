@@ -1,23 +1,15 @@
 .pages-menu {
   @include tablets {
-    display: none;
+    display: flex;
+    transform: translateX(300%);
+    will-change: transform;
+    transition: all .4s;
   }
 
   &.active {
-    display: flex;
+    transform: translateX(0);
   }
 
-  &_footer {
-    display: flex;
-    .pages-menu__list {
-      width: 100%;
-      margin: 0 0;
-      justify-content: flex-start;
-    }
-    .pages-menu__item {
-      margin-right: 10%;
-    }
-  }
 
   &__list {
     display: flex;
@@ -76,6 +68,19 @@
       }
     }
   }
+
+  &_footer {
+    display: flex;
+    .pages-menu__list {
+      width: 100%;
+      margin: 0 0;
+      justify-content: flex-start;
+    }
+    .pages-menu__item {
+      margin-right: 10%;
+    }
+  }
+
 
   &__link {
     &:hover {

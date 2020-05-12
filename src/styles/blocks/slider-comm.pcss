@@ -17,17 +17,20 @@
     right: 33%;
     transform: translateX(-9%);
     display: flex;
-    
+
     @include desktop {
-      right: 27%;
+      right: 18%;
       top: -110px;
     }
+
     @include laptop {
-    right: 25%;
+      right: 22%;
     }
+
     @include tablets {
-    right: 31%;
+      right: 15%;
     }
+
     @include phones {
       position: static;
       margin-bottom: 10%;
@@ -43,15 +46,17 @@
 
     &:hover {
       border-color: #5500f2;
+
       .slider-comments__btn {
         fill: #5500f2;
       }
     }
-
-    &:last-child {
-      margin-right: 0;
-    }
   }
+
+  &:last-child {
+    margin-right: 0;
+  }
+
 
   &__wrap {
     width: 100%;
@@ -68,14 +73,14 @@
     padding: 0 3% 0 115px;
     width: 50%;
     flex: 0 0 auto;
-    
+
     @include tablets {
-    padding: 0 9%;
+      padding: 0 0 0 50px;
     }
 
     @include phones {
       width: 100%;
-      padding: 0 0 0 45px;
+      padding: 0 0 0 50px;
     }
   }
 
@@ -84,8 +89,8 @@
     flex-direction: column;
     position: relative;
 
-      
-      &:before {
+
+    &:before {
       content: "";
       display: inline-block;
       position: absolute;
@@ -97,9 +102,9 @@
       opacity: 0.1;
 
       @include tablets {
-      width: 37px;
-      height: 37px;         
-      left: -45px;
+        width: 37px;
+        height: 37px;
+        left: -45px;
       }
     }
   }

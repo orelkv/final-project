@@ -1,31 +1,12 @@
 import Vue from 'vue';
 // import Flickity from 'vue-flickity';
 
-const display = {
-  template: '#slider-display',
-  props: ['comments', 'currentComments'],
-};
-
-const btn = {
-  template: '#slider-btn',
-};
-
-const slider = {
-  template: '#slider',
-  components: {
-    display,
-  },
-  props: ['comments', 'currentComments'],
-};
-
 new Vue({
   el: '#comments__content',
   template: '#slider-comments',
-  components: {
-    slider,
-    btn,
-    // Flickity
-  },
+  // components: {
+  //   Flickity
+  // },
   
   data() {
     return {
@@ -36,7 +17,6 @@ new Vue({
       //   wrapAround: true,       
       // },
       comments: [],
-      currentComments: {},
     };
   },
   

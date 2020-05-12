@@ -5,16 +5,17 @@
   &__avatar {
     display: flex;
     width: 70%;
-    margin-bottom: 65px;
     align-self: flex-end;
-
+    margin-bottom: 65px;
+    
     @include tablets {
       align-self: flex-start;
       width: 75%;
     }
     @include phones {
+      margin-bottom: 16px;
       align-self: center;
-      width: 200px;
+      width: 160px;
       justify-content: center;  
     }
   }

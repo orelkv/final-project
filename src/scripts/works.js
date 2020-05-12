@@ -58,15 +58,7 @@ new Vue ({
       return this.works[this.currentIndex];
     }
   },
-  watch: {
-    currentIndex(value) {
-      this.makeInfinite(value);
-    }
-  },
   methods: {
-    // makeInfinite(value) {
-    //   const worksAmount = this.works.length - 1;
-    // },
     handleSlide(direction) {
       switch (direction) {
         case 'next':

@@ -1,9 +1,18 @@
 .close {
-  width: 15PX;
-  height: 15PX;
+  width: 25PX;
+  height: 25PX;
   position: absolute;
-  top: 30PX;
-  right: 30PX;
+  top: 67PX;
+  right: 40PX;
+  display: none;
+
+  @include tablets {
+    display: block
+  }
+  
+  @include phones {
+    top: 30PX;
+  }
 
   &__icon {
     stroke: #000000;

@@ -21,24 +21,22 @@
     margin-bottom: 5%;
     
     @include phones {
-      justify-content: center;
+      justify-content: flex-start;
       margin-bottom: 0;
     }
   }
   
   &__item {
     margin: 0 30px 30px 0;
-    width: 154px;
-
-    // &:last-child {
-    //   margin-right: 0;
-    // }
+    width: 154px;    
     
     @include desktop {
-      width: 133px; 
+      margin: 0 30px 15px 0;
+      width: 110px; 
     }    
+    
     @include phones {
-      width: 120px;
+      width: 90px;
     }    
   }
 }

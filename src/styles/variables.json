@@ -7,5 +7,5 @@
   "bp-tablets": "768px",
   "bp-tablets-min": "580px",
   "bp-phones": "480px",
-  "bp-minphones": "480px"
+  "bp-min-phones": "380px"
 }

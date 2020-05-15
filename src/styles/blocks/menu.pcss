@@ -1,16 +1,4 @@
 .pages-menu {
-  @include tablets {
-    display: flex;
-    transform: translateX(300%);
-    will-change: transform;
-    transition: all .4s;
-  }
-
-  &.active {
-    transform: translateX(0);
-  }
-
-
   &__list {
     display: flex;
     justify-content: center;
@@ -77,10 +65,9 @@
       justify-content: flex-start;
     }
     .pages-menu__item {
-      margin-right: 10%;
+      margin-right: 6%;
     }
   }
-
 
   &__link {
     &:hover {
@@ -97,7 +84,8 @@
 
     .pages-menu {
       position: fixed;
-      z-index: 9999;
+      display: flex;
+      z-index: 22222;
       right: 0;
       top: 0;
       bottom: 0;
@@ -107,6 +95,14 @@
       padding-left: 67PX;
       color: #000000;
       flex-direction: column;
+      transform: translateX(300%);
+      will-change: transform;
+      transition: all .4s;
+
+      &.active {
+        transform: translateX(0);
+      }
+
 
       &__list {
         flex-direction: column;

@@ -1,18 +1,32 @@
 .music {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
   
   &__guitar {
     position: relative;
     left: -10px;
     transform: translateY(-24%);
-    z-index: 9999;
+    z-index: 7777;
+    @include tablets {
+      left: 0;
+      transform: rotate(90deg);      
+      height: 90vw;
+    }
   }
 
   &__img-text {
     position: absolute;
-    right: 0;
-    z-index: 8888;
+    z-index: 6666;
     top: 40%;
     right: 32%;
+    @include tablets {
+      top: 0;  
+      left: 50%;
+      transform: translate(-50%);
+      max-height: 100%;
+    }
   }
 }

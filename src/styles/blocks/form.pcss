@@ -51,7 +51,6 @@
       opacity: .3;
     }
 
-
     @include tablets {
       margin-bottom: 5%;
     }
@@ -89,15 +88,16 @@
       line-height: 2;
     }
 
-    &:focus::placeholder {
-      color: transparent;
-    }
-
-    &:focus + .contacts-form__text {
-        opacity: .3;
-    }
-    &:focus {
+    &:focus{
       border-bottom-color: #dc9322;
+
+      &::placeholder {
+        color: transparent;
+      }
+
+      & + .contacts-form__text {
+          opacity: .3;
+      }
     }
   }
 

@@ -3,24 +3,33 @@
   justify-content: center;
   align-items: center;
   position: relative;
+  min-height: 100vh;
+  height: initial;
 
   &__container {
     display: flex;
     justify-content: space-between;
-    align-items: center;      
+    align-items: center;
+    @include tablets {
+      flex-direction: column;
+      justify-content: center;  
+    }      
   }
 
   &__left {
     width: 34%;
     overflow: visible;
-
     @include tablets {
-      display: none;
+      order: 2;
+      width: 100%;
     }
   }
 
   &__right {
     flex: 1;
+    @include tablets {
+      order: 1;
+    }
   }
   &__triangle {
     height: 145px;

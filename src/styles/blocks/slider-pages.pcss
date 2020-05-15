@@ -16,7 +16,7 @@
     overflow: hidden;
 
 
-    @include laptop {
+    @include tablets {
     flex-direction: column;
     justify-content: center;
     position: static;
@@ -27,7 +27,7 @@
   &__wrap {
     position: relative;
 
-    @include laptop {
+    @include tablets {
       margin-bottom: 2%;
     }
     @include phones {
@@ -105,7 +105,13 @@
     @include desktop {
       width: calc(178px*3);
     }
-
+    @include laptop {
+      width: calc(178px*2);
+    }
+    @include tablets {
+      width: calc(178px*3);
+    }
+    
     @include tablets-min {
       width: calc(178px*2);
     }
@@ -118,7 +124,6 @@
 
   &__var-list {
     display: inline-flex;
-    justify-content: flex-end;
     width: 100%;
   }
 
@@ -129,6 +134,12 @@
     position: relative;
 
     @include desktop {
+      width: calc(100%/3);
+    }
+    @include laptop {
+      width: calc(100%/2);
+    }
+    @include tablets {
       width: calc(100%/3);
     }
 
@@ -196,7 +207,7 @@
     flex-direction: column;
     flex-shrink: 0;
 
-    @include laptop {
+    @include tablets {
       width: 62%;
       flex-shrink: initial;
       align-items: center;
@@ -215,7 +226,7 @@
     line-height: 1.6;
     margin-bottom: 10%;
 
-    @include laptop {
+    @include tablets {
     margin-bottom: 2%;
     }
   }
@@ -230,7 +241,7 @@
     color: rgba(51, 60, 73, 0.7);
     margin-bottom: 10%;
 
-    @include laptop {
+    @include tablets {
     margin-bottom: 4%;
     }
   }

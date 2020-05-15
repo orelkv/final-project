@@ -59,21 +59,21 @@ new Vue ({
     }
   },
   methods: {
-    changeSlide(direction) {
-      const allSlides = this.works.length;
-      const varContent = this.$refs['var-content'];
-      const widthContent = parseInt(getComputedStyle(varContent).getPropertyValue('width'));
-      const varItem = this.$refs['var-item']
-      const widthItem = parseInt(getComputedStyle(varItem).getPropertyValue('width'));
-      const slideInContent = widthContent/widthItem;
+    // changeSlide(direction) {
+    //   const allSlides = this.works.length;
+    //   const varContent = this.$refs['var-content'];
+    //   const widthContent = parseInt(getComputedStyle(varContent).getPropertyValue('width'));
+    //   const varItem = this.$refs['var-item']
+    //   const widthItem = parseInt(getComputedStyle(varItem).getPropertyValue('width'));
+    //   const slideInContent = widthContent/widthItem;
 
-      if(currentIndex < slideInContent) {
-        this.handleSlide(direction);
-      }
-      else {
-        this.works[0].appendChild();
-      }
-    },
+    //   if(currentIndex < slideInContent) {
+    //     this.handleSlide(direction);
+    //   }
+    //   else {
+    //     this.works[0].appendChild();
+    //   }
+    // },
   
     handleSlide(direction) {
       switch (direction) {

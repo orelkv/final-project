@@ -1,33 +1,33 @@
 import Vue from 'vue';
-// import Flickity from 'vue-flickity';
+import Flickity from 'vue-flickity';
 
 new Vue({
   el: '#comments__content',
   template: '#slider-comments',
-  // components: {
-  //   Flickity
-  // },
+  components: {
+    Flickity
+  },
   
   data() {
     return {
-      // flickityOptions: {
-      //   initialIndex: 3,
-      //   prevNextButtons: false,
-      //   pageDots: false,
-      //   wrapAround: true,       
-      // },
+      flickityOptions: {
+        initialIndex: 0,
+        prevNextButtons: false,
+        cellAlign: "left",      
+      },
       comments: [],
+      currentIndex: 0,
     };
   },
   
   methods: {
-    // next() {
-    //   this.$refs.flickity.next();
-    // },
+    next() {
+      this.$refs.flickity.next();
+    },
     
-    // previous() {
-    //   this.$refs.flickity.previous();
-    // },
+    previous() {
+      this.$refs.flickity.previous();
+    },
 
     makeArrayImage(array) {
       return array.map((item) => {
@@ -36,11 +36,25 @@ new Vue({
         return item;
       });
     },
+    handleSlide(direction) {
+      switch (direction) {
+        case 'next':
+          if(this.currentIndex<this.comments.length - 1) {
+            this.currentIndex++;
+          }
+          break;
+        case 'prev':
+          if(this.currentIndex > 0) {
+            this.currentIndex--;
+          }
+        break;
+      }
+    },
+
   },  
 
   created() {
     const data = require('../data/reviews.json');
     this.comments = this.makeArrayImage(data);
-    this.currentComments = this.comments[0];
   }
 });

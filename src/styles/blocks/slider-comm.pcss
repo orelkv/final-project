@@ -47,8 +47,19 @@
     &:hover {
       border-color: #5500f2;
 
-      .slider-comments__btn {
+      .btn-pointer__icon {
         fill: #5500f2;
+      }
+    }    
+    &.none {
+      opacity: .3;
+      .btn-pointer__icon {
+      }
+      &:hover {
+        border-color: #ffffff;
+        .btn-pointer__icon {
+          fill: #ffffff;
+        }  
       }
     }
   }
@@ -65,7 +76,6 @@
   }
 
   &__list {
-    display: inline-flex;
     width: 100%;
   }
 

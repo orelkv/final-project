@@ -1,14 +1,20 @@
 script(type='text/x-template')#slider-comments
   .slider-comments
     .slider-comments__btns
-      button.btn-pointer.slider-comments__btn-nav.slider-comments__btn-nav_prev
-        +icon('arrow-down', 'slider-comments__btn btn-pointer__prev')
-      button.btn-pointer.slider-comments__btn-nav.slider-comments__btn-nav_next
-        +icon('arrow-down', 'slider-comments__btn btn-pointer__next')
+      button(
+        @click="previous(), handleSlide('prev')"
+        :class='{none: currentIndex === 0}'
+        ).btn-pointer.slider-comments__btn-nav.slider-comments__btn-nav_prev
+        +icon('arrow-down', 'btn-pointer__icon  btn-pointer__prev')
+      button(
+        @click="next(), handleSlide('next')"
+        :class='{none: currentIndex === (comments.length-1)}'
+        ).btn-pointer.slider-comments__btn-nav.slider-comments__btn-nav_next
+        +icon('arrow-down', 'btn-pointer__icon  btn-pointer__next')
 
     .slider-comments__wrap
-      ul.slider-comments__list
-        li.slider-comments__item.carousel-cell(v-for='comment in comments' :key='comment.id')
+      flickity.slider-comments__list(ref="flickity" :options="flickityOptions")
+        .slider-comments__item.carousel-cell(v-for='comment in comments' :key='comment.id')
 
           .slider-comments__item-wrap
             .slider-comments__text

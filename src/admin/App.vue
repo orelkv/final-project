@@ -127,9 +127,9 @@
                   .add-panel__content
                     .add-panel__load-img
                       .load-img
-                        .load-img__text Перетащите, либо загрузите изображения
+                        .load-img__text Перетащите, либо загрузите изображение
                         .load-img__btn.btn-load
-                          button(type='submit').btn-load__link Загрузить
+                          button(type='button').btn-load__link Загрузить
 
                     .add-panel__info
                       form.add-info
@@ -141,14 +141,14 @@
                           label.add-info__label
                             span.add-info__row-name Ссылка
                             input(type='text' name='name-works').add-info__input
-                        .add-info__row
+                        .add-info__row.add-info__row_textarea
                           label.add-info__label
                             span.add-info__row-name Описание
                             textarea(name='name-works').add-info__input.add-info__input_textarea
                         .add-info__row
                           label.add-info__label
                             span.add-info__row-name Добавление тега
-                            input(type='text' name='name-works')
+                            input(type='text' name='name-works').add-info__input
                         .add-info__row
                           .add-info__btns.btns-form
                             button(type='reset').add-info__reset Отмена
@@ -181,6 +181,7 @@
 
 
 
+          
           section.section.comments
             h2.comments__title.title-section Блок "Отзывы"
             .works__content
@@ -411,18 +412,19 @@ table {
 .content {
   display: grid;
   grid-template:
-    "header" 80px
+    "header" max-content
     "content" 1fr
     / 1fr;
 }
 
 .header {
   background-image: linear-gradient(to top, #3e3e59, #454573);
-
+  padding: 30px 0;
   &__container {
     grid-area: header;
+    grid-gap: 0 28px;
     display: grid;
-    grid-template: "logo title btn" 1fr/1fr 1fr 2fr;
+    grid-template: "logo title btn" 1fr / max-content 1fr max-content;
     align-items: center;
     color: #ffffff;
     @include opensans();
@@ -480,9 +482,9 @@ table {
 .admin-panel {
   &__container {
     display: grid;
-    grid-template: 
-    'aside' 137px
-    'admin-panel' 1fr / 1fr;
+    grid-template:
+      "aside" max-content
+      "admin-panel" 1fr / 1fr;
   }
   &__menu {
     grid-area: aside;
@@ -510,7 +512,7 @@ table {
   &__item {
     position: relative;
     height: 100%;
-    padding: 0 29px;
+    padding: 30px 29px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -535,12 +537,13 @@ table {
   font-size: 21px;
   font-weight: bold;
   color: #414c63;
+  margin: 50px 0;
 }
 
 .about {
   display: grid;
   grid-template:
-    "title" 135px
+    "title" max-content
     "about-content" 1fr
     /1fr;
 
@@ -567,14 +570,13 @@ table {
     font-weight: 600;
     color: #383bcf;
     display: flex;
-    
 
     &:hover {
       text-decoration: underline;
     }
 
     &:before {
-      content: '+';
+      content: "+";
       display: inline-block;
       width: 21px;
       height: 21px;
@@ -597,7 +599,7 @@ table {
     justify-content: space-between;
   }
   &__item {
-    width: calc((100%/2)-16px);
+    width: calc((100% / 2)-16px);
     min-height: 387px;
     box-shadow: 4.1px 2.9px 20px 0 rgba(0, 0, 0, 0.07);
     background-color: #ffffff;
@@ -616,22 +618,21 @@ table {
 
   &__row {
     width: 100%;
-    padding: 0 10px; 
+    padding: 0 10px;
     display: inline-grid;
     grid-gap: 0 20px;
-    grid-template: 
-    'text percent btn' 1fr / 1fr 75px 90px;
-    
+    grid-template: "text percent btn" 1fr / 1fr 75px 90px;
+
     &_title {
-    border-bottom: 1px solid rgba(31,35,45, .5);
+      border-bottom: 1px solid rgba(31, 35, 45, 0.5);
     }
   }
   &__input-wrap {
     position: relative;
     grid-area: percent;
-    
+
     &:before {
-      content: '%';
+      content: "%";
       position: absolute;
       display: block;
       right: 10px;
@@ -661,10 +662,9 @@ table {
       opacity: 1;
     }
 
-
     &_percent {
       padding-left: 10px;
-    }    
+    }
   }
 
   &__btn {
@@ -673,14 +673,12 @@ table {
   }
 
   &__link {
-    width: 15px;
-    height: 12px;
     display: inline-flex;
     justify-content: flex-end;
     align-items: center;
     margin-left: 22px;
     &:before {
-      content: '';
+      content: "";
       display: block;
       width: 15px;
       height: 12px;
@@ -688,26 +686,33 @@ table {
     &_yes {
       display: none;
       &:before {
-        background: svg-load('tick.svg', fill='#00d70a') center center / contain no-repeat;
-      }    
+        background: svg-load("tick.svg", fill= "#00d70a") center center /
+          contain no-repeat;
+      }
     }
     &_no {
       display: none;
       &:before {
-        background: svg-load('cross.svg', fill='#bf2929') center center / contain no-repeat;
-      }    
+        background: svg-load("cross.svg", fill= "#bf2929") center center /
+          contain no-repeat;
+      }
     }
     &_add {
       &:before {
-        opacity: .5;
-        background: svg-load('pencil.svg', fill='#414c63') center center / contain no-repeat;
-      }    
+        opacity: 0.5;
+        background: svg-load("pencil.svg", fill= "#414c63") center center /
+          contain no-repeat;
+      }
     }
     &_del {
       &:before {
-        opacity: .5;
-        background: svg-load('trash.svg', fill='#414c63') center center / contain no-repeat;
-      }    
+        opacity: 0.5;
+        background: svg-load("trash.svg", fill= "#414c63") center center /
+          contain no-repeat;
+      }
+    }
+    &:hover:before {
+      opacity: 1;
     }
   }
 
@@ -716,7 +721,7 @@ table {
     padding-top: 25px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;    ;
+    justify-content: space-between;
   }
 
   &__tech-get {
@@ -731,19 +736,18 @@ table {
     align-self: center;
     display: grid;
     grid-gap: 0 10px;
-    grid-template: 
-    'text percent' 1fr/1fr 75px;
+    grid-template: "text percent" 1fr/1fr 75px;
 
     .skill__input {
-      margin-bottom: 0;  
+      margin-bottom: 0;
       font-size: 16px;
-      font-weight: normal;    
+      font-weight: normal;
       grid-area: text;
       padding-left: 20px;
       border-bottom: 1px solid #1f232d;
       &_percent {
         grid-area: percent;
-        padding-left: 10px;        
+        padding-left: 10px;
       }
     }
   }
@@ -759,13 +763,176 @@ table {
     display: flex;
     justify-content: center;
     align-items: center;
+    &:hover {
+      background-image: linear-gradient(to top, #3f35cb, #006aed);
+    }
+
     &:before {
-      content: '+';
+      content: "+";
       display: block;
       font-family: OpenSans;
       font-size: 30px;
       font-weight: 600;
       color: #ffffff;
+    }
+  }
+}
+
+.works {
+  display: flex;
+  flex-direction: column;
+
+  &__content {
+    display: grid;
+    grid-template:
+      "add-panel" max-content
+      "pages" max-content / 1fr;
+  }
+
+  &__add-panel {
+    grid-area: add-panel;
+  }
+
+  &__pages {
+    grid-area: pages;
+  }
+}
+
+.add-panel {
+  display: grid;
+  grid-template:
+    "title" max-content
+    "content" 1fr/1fr;
+  padding: 25px 20px 30px;
+  box-shadow: 4.1px 2.9px 20px 0 rgba(0, 0, 0, 0.07);
+  background-color: #ffffff;
+
+  &__title {
+    grid-area: title;
+    padding-bottom: 25px;
+    border-bottom: 1px solid rgba(31, 35, 45, 0.15);
+  }
+
+  &__title-text {
+    @include opensans();
+    font-size: 18px;
+    font-weight: bold;
+    color: #414c63;
+  }
+
+  &__content {
+    grid-area: content;
+    display: grid;
+    grid-template: "screen info" 1fr/1fr 1fr;
+    grid-gap: 30px;
+    padding: 48px 10px 0;
+  }
+
+  &__load-img {
+    grid-area: screen;
+    height: 276px;
+    border: dashed 1px #a1a1a1;
+    background-color: #dee4ed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  &__info {
+    grid-area: info;
+  }
+}
+
+.load-img {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  &__text {
+    width: 219px;
+    @include opensans();
+    opacity: 0.5;
+    font-size: 16px;
+    font-weight: 600;
+    color: rgb(65, 76, 99);
+    margin-bottom: 25px;
+  }
+}
+
+.btn-load {
+  &__link {
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    padding: 15px 45px;
+    border-radius: 25px;
+    background-image: linear-gradient(to top, #006aed, #3f35cb);
+  
+    &:hover {
+      background-image: linear-gradient(to top, #3f35cb, #006aed);
+    }
+  }
+}
+
+.add-info {
+  display: flex;
+  flex-direction: column;
+
+  &__row {
+    width: 100%;
+    margin-bottom: 27px;
+    border-bottom: solid 2px #414c63;
+
+    &:last-child {
+      margin-bottom: 0;
+      border-bottom: none;
+    }
+
+    &_textarea {
+      border-bottom: none;
+    }
+
+  }
+
+  &__label {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    @include opensans();
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  &__row-name {
+    @include opensans();
+    font-size: 16px;
+    font-weight: 600;
+    opacity: 0.5;
+    color: rgb(65, 76, 99);
+    margin-bottom: 17px;
+  }
+
+  &__input {
+    @include opensans();
+    font-size: 16px;
+    font-weight: 600;
+    width: 100%;
+    color: #414c63;
+    margin-bottom: 15px;
+    outline: none;
+    border: none;
+    
+
+    &_textarea {
+      height: 107px;
+      line-height: 1.88;
+      resize: none;
+      overflow: auto;
+       opacity: 0.2;
+  border: solid 1px rgba();
     }
   }
 }

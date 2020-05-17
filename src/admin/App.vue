@@ -131,44 +131,92 @@
                         .load-img__btn.btn-load
                           button(type='button').btn-load__link Загрузить
 
-                    .add-panel__info
-                      form.add-info
-                        .add-info__row
-                          label.add-info__label
-                            span.add-info__row-name Название
-                            input(type='text' name='name-works').add-info__input
-                        .add-info__row
-                          label.add-info__label
-                            span.add-info__row-name Ссылка
-                            input(type='text' name='name-works').add-info__input
-                        .add-info__row.add-info__row_textarea
-                          label.add-info__label
-                            span.add-info__row-name Описание
-                            textarea(name='name-works').add-info__input.add-info__input_textarea
-                        .add-info__row
-                          label.add-info__label
-                            span.add-info__row-name Добавление тега
-                            input(type='text' name='name-works').add-info__input
-                        .add-info__row
-                          .add-info__btns.btns-form
-                            button(type='reset').add-info__reset Отмена
-                            .add-info__btn.btn-load
-                              button(type='submit').btn-load__link Загрузить
+                    .add-panel__info.add-info
+                      form.load-form
+                        .load-form__row
+                          label.load-form__label
+                            span.load-form__row-name Название
+                            input(type='text' name='name-works').load-form__input
+                        .load-form__row
+                          label.load-form__label
+                            span.load-form__row-name Ссылка
+                            input(type='text' name='name-works').load-form__input
+                        .load-form__row.load-form__row_textarea
+                          label.load-form__label
+                            span.load-form__row-name Описание
+                            textarea(name='name-works').load-form__input.load-form__input_textarea
+                        .load-form__row
+                          label.load-form__label
+                            span.load-form__row-name Добавление тега
+                            input(type='text' name='name-works').load-form__input
+                        .load-form__row
+                          .load-form__btns
+                            .btns-form
+                              button(type='reset').btns-form__reset Отмена
+                              .add-info__btn.btn-load
+                                button(type='submit').btn-load__link Загрузить
 
 
               .works__pages
                 .pages
                   ul.pages__list
                     li.pages__item.pages__item_add
-                      .add-work
-                        .add-work__btn
-                        .add-work__text Добавить работу
+                      .add-content
+                        .add-content__btn
+                        .add-content__text Добавить работу
 
                     li.pages__item
                       .page
                         .page__screen
                           .page-photo
-                            img.page-photo__img                            
+                            img(src='./image/preview/autumn.jpg').page-photo__img
+
+                        .page__content
+                          h4.page__title Сайт школы образования
+                          .page__text
+                            p Этот парень проходил обучение в школе веб-разработки LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
+                          a.page__link http://LoftSchool.ru
+                          .page__btns
+                            .btns-resize
+                              a.btns-resize__link.btns-resize__link_write(href='#') Править
+                              a.btns-resize__link.btns-resize__link_del(href='#') Удалить
+                                        
+                    li.pages__item
+                      .page
+                        .page__screen
+                          .page-photo
+                            img(src='./image/preview/mountains.jpg').page-photo__img
+
+                        .page__content
+                          .page__content-text
+                            h4.page__title Сайт школы образования
+                            .page__text
+                              p Этот парень проходил обучение в школе веб-разработки LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
+                            a.page__link http://LoftSchool.ru
+                          .page__btns.btns-resize
+                            a.btns-resize__link.btns-resize__link_write(href='#') Править
+                            a.btns-resize__link.btns-resize__link_del(href='#') Удалить
+                    
+                    li.pages__item
+                      .page
+                        .page__screen
+                          .page-photo
+                            img(src='./image/preview/car.jpg').page-photo__img
+
+                        .page__content
+                          h4.page__title Сайт школы образования
+                          .page__text
+                            p Этот парень проходил обучение в школе веб-разработки LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
+                          a.page__link http://LoftSchool.ru
+                          .page__btns.btns-resize
+                            a.btns-resize__link.btns-resize__link_write(href='#') Править
+                            a.btns-resize__link.btns-resize__link_del(href='#') Удалить
+                    
+                    li.pages__item
+                      .page
+                        .page__screen
+                          .page-photo
+                            img(src='./image/preview/tram.jpg').page-photo__img
 
                         .page__content
                           h4.page__title Сайт школы образования
@@ -184,39 +232,38 @@
           
           section.section.comments
             h2.comments__title.title-section Блок "Отзывы"
-            .works__content
+            .comments__content
               .new-comments
-                h2.works__title.title-section Блок "Работы"
                 .add-panel 
                   .add-panel__title
-                    h3.add-panel__title-text Добавление работы
+                    h3.add-panel__title-text Новый отзыв
 
                   .add-panel__content
                     .add-panel__load-avatar
                       .load-avatar
-                        .avatar
-                          .avatar__wrap
-                            img.avatar__img
+                        .load-avatar__wrap
+                          .load-avatar__img
                         a.load-avatar__link(href='#') Добавить фото
 
-                    .add-panel__load-comments
-                      form.load-comments
-                        .load-comments__row
-                          label.load-comments__label
-                            span.load-comments__name Имя автора
-                            input(type='text' name='name-author').load-comments__input
-                          label.load-comments__label
-                            span.load-comments__name Титул автора
-                            input(type='text' name='Prof-author').load-comments__input
+                    .add-panel__load-comments.load-comments
+                      form.load-form
+                        .load-form__row
+                          label.load-form__label
+                            span.load-form__row-name Имя автора
+                            input(type='text' name='name-author').load-form__input
+                        .load-form__row  
+                          label.load-form__label
+                            span.load-form__row-name Титул автора
+                            input(type='text' name='Prof-author').load-form__input
                         
-                        .load-comments__row
-                          label.load-comments__label
-                            span.load-comments__name Отзыв
-                            textarea(name='comments').load-comments__input.load-comments__input_textarea
+                        .load-form__row.load-form__row_textarea
+                          label.load-form__label
+                            span.load-form__row-name Отзыв
+                            textarea(name='comments').load-form__input.load-form__input_textarea
 
-                        .load-comments__row
-                          .load-comments__btns.btns-form
-                            button(type='reset').add-info__reset Отмена
+                        .load-form__row.load-form__row_btn
+                          .load-form__btns.btns-form
+                            button(type='reset').btns-form__reset Отмена
                             .add-info__btn.btn-load
                               button(type='submit').btn-load__link Сохранить                     
 
@@ -224,26 +271,82 @@
 
               .comments
                 .all-comments
-                  ul.all-comments
+                  ul.all-comments__list
                     li.all-comments__item.all-comments__item_add
-                      .add-work
-                        .add-work__btn
-                        .add-work__text Добавить работу
+                      .add-content
+                        .add-content__btn
+                        .add-content__text Добавить работу
 
                     li.all-comments__item
                       .comment
                         .comment__author
                           .comment__avatar
                             .avatar
-                              .avatar__wrap
-                                img.avatar__img
+                              img.avatar__img(src='./image/user.jpg')
 
                           .comment__author-info
-                            h4.comment__author-name Владимир Сабанцев
-                            span.comment__author-prof
+                            h4.comment__author-name Александр Симаков
+                            span.comment__author-prof Менеджер
 
 
-                        .comments__content
+                        .comment__content
+                          .comment__text
+                            p Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах.
+                          
+                          .comment__btns.btns-resize
+                            a.btns-resize__link.btns-resize__link_write(href='#') Править
+                            a.btns-resize__link.btns-resize__link_del(href='#') Удалить
+                    li.all-comments__item
+                      .comment
+                        .comment__author
+                          .comment__avatar
+                            .avatar
+                              img.avatar__img(src='./image/user.jpg')
+
+                          .comment__author-info
+                            h4.comment__author-name Александр Симаков
+                            span.comment__author-prof Менеджер
+
+
+                        .comment__content
+                          .comment__text
+                            p Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах.
+                          
+                          .comment__btns.btns-resize
+                            a.btns-resize__link.btns-resize__link_write(href='#') Править
+                            a.btns-resize__link.btns-resize__link_del(href='#') Удалить
+                    li.all-comments__item
+                      .comment
+                        .comment__author
+                          .comment__avatar
+                            .avatar
+                              img.avatar__img(src='./image/user.jpg')
+
+                          .comment__author-info
+                            h4.comment__author-name Александр Симаков
+                            span.comment__author-prof Менеджер
+
+
+                        .comment__content
+                          .comment__text
+                            p Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах.
+                          
+                          .comment__btns.btns-resize
+                            a.btns-resize__link.btns-resize__link_write(href='#') Править
+                            a.btns-resize__link.btns-resize__link_del(href='#') Удалить
+                    li.all-comments__item
+                      .comment
+                        .comment__author
+                          .comment__avatar
+                            .avatar
+                              img.avatar__img(src='./image/user.jpg')
+
+                          .comment__author-info
+                            h4.comment__author-name Александр Симаков
+                            span.comment__author-prof Менеджер
+
+
+                        .comment__content
                           .comment__text
                             p Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах.
                           
@@ -594,16 +697,15 @@ table {
 
 .skills {
   &__list {
-    display: inline-flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-gap: 30px;
   }
   &__item {
-    width: calc((100% / 2)-16px);
-    min-height: 387px;
+    height: 387px;
     box-shadow: 4.1px 2.9px 20px 0 rgba(0, 0, 0, 0.07);
     background-color: #ffffff;
-    margin-bottom: 30px;
   }
 }
 
@@ -791,6 +893,8 @@ table {
 
   &__add-panel {
     grid-area: add-panel;
+    margin-bottom: 30px;
+
   }
 
   &__pages {
@@ -877,7 +981,7 @@ table {
   }
 }
 
-.add-info {
+.load-form {
   display: flex;
   flex-direction: column;
 
@@ -894,7 +998,6 @@ table {
     &_textarea {
       border-bottom: none;
     }
-
   }
 
   &__label {
@@ -927,13 +1030,348 @@ table {
     
 
     &_textarea {
-      height: 107px;
+      height: 137px;
+      padding: 0 10px;
       line-height: 1.88;
       resize: none;
       overflow: auto;
-       opacity: 0.2;
-  border: solid 1px rgba();
+      border: solid 1px rgba(46, 65, 43, .2);
+      margin-bottom: 0;
     }
   }
 }
+
+.btns-form {
+  display: flex;
+  align-content: center;
+  justify-content: flex-end;
+
+  &__reset {
+    margin-right: 60px;
+    color: #383bcf;
+    @include opensans();
+    font-size: 16px;
+    font-weight: 600;
+    font-size: 16px;
+    font-weight: bold;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.pages {
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-gap: 30px;
+  }
+
+  &__item {
+    height: 556px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 4.096px 2.868px 20px 0px rgba(0, 0, 0, 0.07);
+
+    &_add {
+      display: flex;
+      box-shadow: none;
+      align-items: center;
+      justify-content: center;
+      background-image: linear-gradient(0deg, rgb(0,106,237) 0%, rgb(32,80,220) 48%, rgb(63,53,203) 100%);
+    }
+  }
+}
+
+.add-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &__btn {
+    width: 146px;
+    height: 146px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+    cursor: pointer;
+
+    &:hover {
+      border-color: #999999;
+      &:before {
+        color: #999999;
+      }
+      & ~ {
+        .add-content__text {
+        color: #999999;
+        }
+      }
+    }
+
+    &:before {
+      content: '+';
+      @include opensans();
+      font-size: 72px;
+      color: rgb(255, 255, 255);
+      display: block;
+    }
+  }
+
+  &__text {
+    @include opensans;
+    width: 50%;
+    font-size: 18px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    text-align: center;
+  }
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  
+  &__content {
+    display: flex;
+    flex-direction: column;
+    padding: 35px 30px;
+    justify-content: space-between;
+  }
+
+  &__content-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    @include opensans();
+    font-size: 18px;
+    color: rgb(65, 76, 99);
+    font-weight: bold;
+    margin-bottom: 25px;
+  }
+
+  &__text {
+    margin-bottom: 25px;
+
+    & p {
+      @include opensans();
+    color: rgba(65, 76, 99, 0.702);
+    line-height: 1.875;
+    font-size: 16px;
+    font-weight: 600;
+    }
+  }
+
+  &__link {
+    @include opensans();
+    font-size: 16px;
+    color: rgb(56, 59, 207);
+    margin-bottom: 40px;
+    font-weight: 600;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.btns-resize {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__link {
+    @include opensans();
+    font-weight: 600;
+    font-size: 16px;
+    color: rgba(65, 76, 99, 0.502);
+    display: inline-block;
+    &:after {
+      content: '';
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      margin-left: 10px;
+    }
+    &_write:after {
+        background: svg-load("pencil.svg", fill= "#383bcf") center center /
+          contain no-repeat;
+    }
+    &_del:after {
+        background: svg-load("cross.svg", fill= "#c92e2e") center center /
+          contain no-repeat;
+    }
+    &:hover {
+      color: rgb(65, 76, 99);
+    }
+  }
+}
+
+.comments {
+  display: flex;
+  flex-direction: column;
+
+  &__content {
+    display: flex;
+    flex-direction: column;    
+  }
+}
+
+.new-comments {
+  margin-bottom: 30px;
+
+  .add-panel {
+    &__content {
+      display: flex;
+    }
+    &__load-avatar {
+      margin-right: 30px;
+    }
+  }
+}
+
+.load-avatar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  &__wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: rgb(222, 228, 237);
+    width: 200px;
+    height: 200px;
+    margin-bottom: 25px;
+  }
+  &__img {
+    width: 90px;
+    height: 115px;
+    background: svg-load('user.svg', fill='#ffffff') center center / cover no-repeat;
+  }
+  &__link {
+  @include opensans();
+  font-size: 16px;
+  color: rgb(56, 59, 207);
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.load-comments {
+  padding-right: 20%;
+  .load-form {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    &__row {
+      width: calc(100%/2 - 30px);
+      &_textarea {
+        width: 100%;
+      }      
+      &_btn {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.all-comments {
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-gap: 30px;
+  }
+
+  &__item {
+    height: 380px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 4.096px 2.868px 20px 0px rgba(0, 0, 0, 0.07);
+
+    &_add {
+      display: flex;
+      box-shadow: none;
+      align-items: center;
+      justify-content: center;
+      background-image: linear-gradient(0deg, rgb(0,106,237) 0%, rgb(32,80,220) 48%, rgb(63,53,203) 100%);
+    }
+  }
+}
+
+.comment {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 20px;
+  height: 100%;
+
+
+  &__author {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px 30px;
+    border-bottom: solid 1px rgba(31, 35, 45, .5);
+    margin-bottom: 25px;
+  }
+
+  &__avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 20px;
+  }
+
+  &__author-info {
+    display: flex;
+    flex-direction: column;
+    color: rgb(65, 76, 99);
+    @include opensans();
+  }
+
+  &__author-name {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  &__author-prof {
+    font-size: 16px;
+    opacity: .5;
+    font-weight: 600;
+    color: rgb(65, 76, 99);
+      opacity: 0.5;
+  }
+  
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 10px;
+    height: 100%;
+  }
+
+  &__text {
+    margin-bottom: 25px;
+  }
+
+    & p {
+      color: rgba(65, 76, 99, 0.702);
+      @include opensans();
+      font-weight: 600;
+      line-height: 1.875;
+      font-size: 16px;
+    }  
+}
+
+
 </style>
+

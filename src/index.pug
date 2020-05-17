@@ -185,6 +185,25 @@ html(lang="ru")
 
 
         section.section.connect#connect
+          .overlay
+            .overlay__main-message
+              span.overlay__message Письмо отправлено
+              button(type='button').overlay__button Закрыть
+
+            .overlay__footer-message
+              span.overlay__footer-text Сообщение отправлено
+              .overlay__close
+                +icon('close', 'overlay__icon')
+            .overlay__footer-message
+              span.overlay__footer-text Сообщение не отправлено
+              .overlay__close
+                +icon('close', 'overlay__icon')
+            .overlay__footer-message
+              span.overlay__footer-text Сервер перегружен
+              .overlay__close
+                +icon('close', 'overlay__icon')
+
+
           .container.connect__container
             h2.title-section.connect__title Связаться со мной
             .connect__content
@@ -194,16 +213,29 @@ html(lang="ru")
                     label.contacts-form__label.contacts-form__label_name
                       input(type="text" id='name' name="name" required).contacts-form__input.contacts-form__input_name 
                       span.contacts-form__text Введите Ваше имя
+                      span.contacts-form__icon
+                       +icon('avatar')
+                      span.contacts-form__error
+                        p Какая-то ошибка
+
                   .contacts-form__input-wrap
                     label.contacts-form__label.contacts-form__label_email
                       input(type="email" id='email' name="email" required).contacts-form__input.contacts-form__input_email
                       span.contacts-form__text Введите Ваш email
+                      span.contacts-form__icon
+                        +icon('envelope')
+                      span.contacts-form__error
+                        p Какая-то ошибка
                 
                 .contacts-form__row
                   .contacts-form__input-wrap.contacts-form__input-wrap_textarea
                     label.contacts-form__label.contacts-form__label_message
-                      textarea(id="message" name="message" required).contacts-form__input.contacts-form__input_message
+                      textarea(id="message" name="message").contacts-form__input.contacts-form__input_message
                       span.contacts-form__text Сообщение к письму
+                      span.contacts-form__icon
+                        +icon('message')
+                      span.contacts-form__error
+                        p Какая-то ошибка
 
                 button(type='submit').btn Отправить
 

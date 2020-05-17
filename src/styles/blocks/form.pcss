@@ -17,7 +17,7 @@
   }
 
   &__input-wrap {
-    width: 40%;
+    width: 47%;
 
     @include desktop {
       width: 44%;
@@ -33,57 +33,127 @@
   }
 
   &__label {
+    @include opensans();
     display: flex;
     flex-direction: column;
     position: relative;
-    margin-bottom: 10%;
-
-    &:before {
-      content: "";
-      width: 32px;
-      height: 32px;
-      position: absolute;
-      display: block;
-      z-index: 9999;
-      bottom: 12px;
-      left: 0;
-      z-index: 999;
-      opacity: .3;
+    margin-bottom: 8%;
+    
+    &_message {
+      height: 125px;
+      margin-bottom: 7%;
     }
 
     @include tablets {
       margin-bottom: 5%;
     }
   }
-
-  &__text {
-    margin-bottom: 30px;
-    font-size: 16px;
-    font-weight: 600;
-    color: rgb(255, 255, 255);
-    padding-left: 47px;
-    order: 1;
-    opacity: 0.3;
-  }
-
+  
   &__input {
     width: 100%;
     border: none;
     outline: none;
     border-bottom: solid 1px #ffffff;
     background-color: transparent;
+    padding: 45px 5px 15px 45px;
     color: #ffffff;
     font-size: 18px;
     font-weight: bold;
     line-height: 2;
-    padding: 10px 48px;
     position: relative;
-    order: 2;
 
-    &:focus{
-      border-bottom-color: #dc9322;
+    &:focus {
+      border-bottom-color: #6c23f4;
+      & ~ {
+        .contacts-form__icon svg {
+          fill: #6c23f4;
+          opacity: 1;
+        }
+      }
+    }
+  
+
+    &:focus,
+    &_valid-input {
+      & ~ {
+        .contacts-form__text {
+          transform: translate(0 0);
+          font-weight: light;
+        }
+      }
+    }
+
+    &_error {
+      border-bottom-color: #cd1515;
+      & ~ {
+        .contacts-form__icon svg {
+          fill: #cd1515;
+          opacity: 1;
+        }
+        .contacts-form__error {
+          opacity: 1;
+        }
+      }
     }
   }
+
+  
+  
+  &__text {
+    font-size: 16px;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+    left: 45px;
+    top: 0;
+    opacity: 0.3;
+    position: absolute;
+    transform-origin: 0 50%;
+    transform: scale(1.125) translate(0 46px);
+    font-weight: bold;
+    transition: all .3s;
+  }
+
+  &__icon {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    
+    svg {
+      opacity: .3;
+      height: 32px;
+      fill: #ffffff;
+      transition: all .3s;
+    }
+  }
+
+  &__error {
+    background-color: rgb(205, 21, 21);
+    position: absolute;
+    top: 100%;
+    left: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 20px;
+    @include opensans();
+    font-size: 14px;
+    color: rgb(255, 255, 255);
+    opacity: 0;
+    transition: all .3s;
+
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 20px;
+      height: 20px;    
+      transform: rotate(45deg);
+      background-color: rgb(205, 21, 21);
+      top: -10px;      
+    }
+    
+  }
+
 
   &__input-wrap_textarea {
     width: 100%;
@@ -92,19 +162,5 @@
   &__input_message {
     resize: none;
     overflow: auto;
-  }
-
-  &__label_name:before {
-    background: svg-load('avatar.svg', fill=#ffffff) center center / cover no-repeat;
-  }
-
-  &__label_email:before {
-    background: svg-load('envelope.svg', fill=#ffffff) center center / cover no-repeat;
-  }
-
-  &__label_message:before {
-    background: svg-load('message.svg', fill=#ffffff) center center / cover no-repeat;
-    top: 63px;
-    bottom: initial;
   }
 }

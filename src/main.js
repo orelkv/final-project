@@ -8,3 +8,4 @@ import "./scripts/skills";
 import "./scripts/works";
 import "./scripts/comments";
 import "./scripts/menu";
+import "./scripts/form";

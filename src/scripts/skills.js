@@ -24,8 +24,6 @@ const skillsRow = {
   props: ['category']
 };
 
-
-
 new Vue({
   el: '#skills-tech',
   template: '#skills-components',

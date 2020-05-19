@@ -15,12 +15,12 @@ const info = {
     tagsArray() {
       return this.currentWorks.skills.split(',')
     }
-  }
+  },
 };
 
 const btns = {
   template: '#slider-btns',
-  props: ['currentWorks', 'works', 'currentIndex'],
+  props: ['currentWorks', 'works', 'currentIndex', 'changeSlide'],
 };
 
 const preview = {
@@ -28,7 +28,18 @@ const preview = {
   components: {
     btns
   },
-  props: ['currentWorks', 'works', 'currentIndex'],
+  methods: {
+    calcWidth(direction) {
+      const varContent = this.$refs.varContent;
+      const widthContent = parseInt(getComputedStyle(varContent).getPropertyValue('width'));
+      const varItem = this.$refs.varItem[0];
+      const widthItem = parseInt(getComputedStyle(varItem).getPropertyValue('width'));
+      const slideInContent = widthContent/widthItem;
+      this.$emit('calcWidth', slideInContent);
+      this.$emit('slide', direction);
+    },
+  },
+  props: ['currentWorks', 'works', 'indexSlide', 'currentIndex', 'changeSlide'],
 };
 
 const display = {
@@ -37,9 +48,13 @@ const display = {
     preview: preview,
     info: info
   },
-  props: ['currentWorks', 'works', 'currentIndex'],
+  methods: {
+    calcWidth(index) {
+      this.$emit('calcWidth', index);
+    },
+  },
+  props: ['currentWorks', 'indexSlide', 'works', 'currentIndex', 'changeSlide'],
 };
-
 
 new Vue ({
   el: '#slider-components',
@@ -51,6 +66,8 @@ new Vue ({
     return {
       works: [],
       currentIndex: 0,
+      slideInContent: 0,
+
     }
   },
   computed: {
@@ -59,23 +76,18 @@ new Vue ({
     }
   },
   methods: {
-    // changeSlide(direction) {
-    //   const allSlides = this.works.length;
-    //   const varContent = this.$refs['var-content'];
-    //   const widthContent = parseInt(getComputedStyle(varContent).getPropertyValue('width'));
-    //   const varItem = this.$refs['var-item']
-    //   const widthItem = parseInt(getComputedStyle(varItem).getPropertyValue('width'));
-    //   const slideInContent = widthContent/widthItem;
-
-    //   if(currentIndex < slideInContent) {
-    //     this.handleSlide(direction);
-    //   }
-    //   else {
-    //     this.works[0].appendChild();
-    //   }
-    // },
   
+    moveSlide(index) {
+      this.currentIndex = index;
+    },
+
+    calcWidth(index) {
+      this.slideInContent = index;
+    },
+
+
     handleSlide(direction) {
+      
       switch (direction) {
         case 'next':
           if(this.currentIndex<this.works.length - 1) {
@@ -89,6 +101,18 @@ new Vue ({
         break;
       }
     },
+
+    changeSlide(direction) {
+      const list = document.querySelector('.slider-pages__var-list')
+      if (this.currentIndex < this.slideInContent-1) {
+        this.handleSlide(direction)
+      }
+      else {
+        list.style.transform = 'translateX(-100 + '%')';
+        this.handleSlide(direction)
+      }
+    },
+
     makeArrayImage(array) {
       return array.map((item) => {
         const requirePic = require(`../images/content/preview/${item.photo}`);

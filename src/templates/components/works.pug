@@ -5,7 +5,9 @@ script(type='text/x-template')#slider-pages
         :currentWorks='currentWorks'
         :works='works'
         :currentIndex='currentIndex'
-        @slide="handleSlide"
+        @slide="changeSlide"
+        @calcWidth='calcWidth'
+        @moveSlide='moveSlide'
         )
 
 
@@ -18,30 +20,34 @@ script(type='text/x-template')#slider-page
         preview(
           :works='works'
           :currentWorks='currentWorks'
+          @calcWidth='calcWidth'
           @slide="$emit('slide', $event)"
           :currentIndex='currentIndex'
+          @moveSlide='$emit("moveSlide", $event)'
+
         )
     info(
       :currentWorks='currentWorks'
-      :works='works'
+      :works='works'      
     )
 
 
 script(type='text/x-template')#slider-preview
   .slider-pages__var
-    .slider-pages__var-content(ref='var-content')
+    .slider-pages__var-content(ref='varContent')
       ul.slider-pages__var-list
         li.slider-pages__var-item(
+          ref='varItem'
           v-for='work in works' 
           :key='work.id'
           :class='{active: currentWorks.id === work.id}'
-          ref='var-item'
+          @click='$emit("moveSlide", work.id-1)'
           )
           img(:src='work.photo').slider-pages__img-page
 
     btns(
-      @slide="$emit('slide', $event)"
-      :currentIndex='currentIndex'
+      @slide="$emit('slide', $event, calcWidth())"
+      :currentIndex='currentIndex'      
       :works='works'
     )
 

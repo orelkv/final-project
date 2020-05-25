@@ -1,19 +1,38 @@
 <template lang='pug'>
   .menu
     ul.menu__list
-      li.menu__item.menu__item_active
-        a.menu__link(href="#") Обо мне
-      li.menu__item
-          a.menu__link(href="#") Работы
-      li.menu__item 
-          a.menu__link(href="#") Отзывы
-  
+      li.menu__item(
+        v-for='tab in tabs' :key='tab.id'
+        :class="{'active' : activeTabId === tab.id}"
+        )
+        button.menu__link(
+          type='button'
+          @click='handleChange(tab)'
+        ) {{tab.title}}
 </template>
 
 <script>
+
+const tabs = [
+  {id: 0, title: 'Обо мне', href: '/admin'},
+  {id: 1, title: 'Работы', href: '/works'},
+  {id: 2, title: 'Отзывы', href: '/comments'},
+]
+
 export default {
   name: 'menu',
-  
+  data() {
+    return {
+      tabs,
+      activeTabId: 0,
+    }
+  },
+  methods: {
+    handleChange(tab) {
+      this.activeTabId = tab.id;
+      this.$emit('tabChanged', tab)
+    }
+  },  
 }
 </script>
 
@@ -26,10 +45,6 @@ export default {
   display: flex;
   height: 100%;
   align-items: center;
-  @include opensans();
-  font-size: 16px;
-  font-weight: 600;
-  color: #414c63;
 
   &__list {
     display: flex;
@@ -44,9 +59,16 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-
-    &_active {
-      border-bottom: solid 3px #383bcf;
+    &.active {
+      &:before {
+        content: '';
+        position: absolute;
+        display: block;
+        bottom: 0;
+        left: 0;
+        border-bottom: solid 3px #383bcf;
+        right: 0;
+      }
       .menu__link {
         color: #383bcf;
       }
@@ -54,6 +76,10 @@ export default {
   }
 
   &__link {
+    @include opensans();
+    font-size: 16px;
+    font-weight: 600;
+    color: #414c63;
     &:hover {
       color: #383bcf;
     }

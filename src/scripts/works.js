@@ -35,8 +35,7 @@ const preview = {
       const varItem = this.$refs.varItem[0];
       const widthItem = parseInt(getComputedStyle(varItem).getPropertyValue('width'));
       const slideInContent = widthContent/widthItem;
-      this.$emit('calcWidth', slideInContent);
-      this.$emit('slide', direction);
+      this.$emit('slide', direction, slideInContent);
     },
   },
   props: ['currentWorks', 'works', 'indexSlide', 'currentIndex', 'changeSlide'],
@@ -49,8 +48,8 @@ const display = {
     info: info
   },
   methods: {
-    calcWidth(index) {
-      this.$emit('calcWidth', index);
+    calcWidth(direction, index) {
+      this.$emit('slide', direction, index);
     },
   },
   props: ['currentWorks', 'indexSlide', 'works', 'currentIndex', 'changeSlide'],
@@ -81,9 +80,9 @@ new Vue ({
       this.currentIndex = index;
     },
 
-    calcWidth(index) {
-      this.slideInContent = index;
-    },
+    // calcWidth(index) {
+    //   this.slideInContent = index;
+    // },
 
 
     handleSlide(direction) {
@@ -102,14 +101,16 @@ new Vue ({
       }
     },
 
-    changeSlide(direction) {
+    changeSlide(direction, index) {
       const list = document.querySelector('.slider-pages__var-list')
-      if (this.currentIndex < this.slideInContent-1) {
+      if (this.currentIndex < index-1) {
+        console.log(this.currentIndex)
+        console.log(index)
         this.handleSlide(direction)
       }
       else {
         list.style.transform = 'translateX(-100 + '%')';
-        this.handleSlide(direction)
+        // this.handleSlide(direction)
       }
     },
 

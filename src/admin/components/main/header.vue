@@ -2,29 +2,29 @@
   header.header
     .container.header__container
       .header__logo
-        .user
-          .user__avatar.avatar
-            img(src='../../image/user.jpg').avatar__img
-
-          .user__name Орлов Алексей
-
+        user
 
       .header__name
         .title-panel Панель администрирования
 
-
       .header__btn
-        .btn-close
-          a.btn-close__link Выйти
-
+          button.btn-close(
+            type='button'
+            @click=''
+            ) Выйти
 
   
 </template>
 
 <script>
+
+import user from '../blocks/user';
+
 export default {
-  name: 'header',
-  
+  name: 'header',  
+  components: {
+    user,
+  }
 }
 </script>
 
@@ -33,50 +33,22 @@ export default {
 @import "../css/mixin.pcss";
 
 .header {
-  background-image: linear-gradient(to top, #3e3e59, #454573);
-  padding: 30px 0;
   &__container {
-    grid-area: header;
-    grid-gap: 0 28px;
-    display: grid;
-    grid-template: "logo title btn" 1fr / max-content 1fr max-content;
+    display: flex;
     align-items: center;
     color: #ffffff;
     @include opensans();
   }
 
   &__logo {
-    grid-area: logo;
-  }
-
-  &__name {
-    grid-area: title;
+    margin-right: 28px;
   }
 
   &__btn {
-    grid-area: btn;
-    justify-self: end;
+    margin-left: auto;
   }
 }
 
-.user {
-  font-size: 18px;
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-
-  &__avatar {
-    width: 44px;
-    height: 44px;
-    overflow: hidden;
-    border-radius: 50%;
-    margin-right: 20px;
-  }
-
-  &__name {
-    line-height: 0;
-  }
-}
 
 .title-panel {
   opacity: 0.5;
@@ -85,6 +57,8 @@ export default {
 }
 
 .btn-close {
+  color: #ffffff;
+  @include opensans();
   opacity: 0.7;
   font-size: 16px;
   font-weight: normal;

@@ -6,7 +6,6 @@ script(type='text/x-template')#slider-pages
         :works='works'
         :currentIndex='currentIndex'
         @slide="changeSlide"
-        @calcWidth='calcWidth'
         @moveSlide='moveSlide'
         )
 
@@ -20,8 +19,7 @@ script(type='text/x-template')#slider-page
         preview(
           :works='works'
           :currentWorks='currentWorks'
-          @calcWidth='calcWidth'
-          @slide="$emit('slide', $event)"
+          @slide="calcWidth"
           :currentIndex='currentIndex'
           @moveSlide='$emit("moveSlide", $event)'
 
@@ -46,7 +44,7 @@ script(type='text/x-template')#slider-preview
           img(:src='work.photo').slider-pages__img-page
 
     btns(
-      @slide="$emit('slide', $event, calcWidth())"
+      @slide="calcWidth"
       :currentIndex='currentIndex'      
       :works='works'
     )

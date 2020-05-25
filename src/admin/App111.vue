@@ -379,7 +379,7 @@ export default {};
 
 
 <style lang='pcss'>
-@import "./components/css/font.pcss";
+@import "./fonts/font.pcss";
 
 @mixin desktopHd() {
   @media screen and (max-width: 1800px) {

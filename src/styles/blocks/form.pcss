@@ -40,6 +40,7 @@
     margin-bottom: 8%;
     
     &_message {
+      padding-top: 45px;
       height: 125px;
       margin-bottom: 7%;
     }
@@ -140,6 +141,7 @@
     color: rgb(255, 255, 255);
     opacity: 0;
     transition: all .3s;
+    z-index: 1111;
 
     &:before {
       content: '';
@@ -162,5 +164,6 @@
   &__input_message {
     resize: none;
     overflow: auto;
+    padding-top: 0;
   }
 }

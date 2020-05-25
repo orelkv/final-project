@@ -185,22 +185,26 @@ html(lang="ru")
 
 
         section.section.connect#connect
-          .overlay
+          .overlay#overlay
+
             .overlay__main-message
               span.overlay__message Письмо отправлено
-              button(type='button').overlay__button Закрыть
+              button(
+                type='button'
+                @click.prevent='closeOverlay'
+                ).overlay__button Закрыть
 
-            .overlay__footer-message
-              span.overlay__footer-text Сообщение отправлено
-              .overlay__close
+            .overlay__footer-message.overlay__footer-message_ok
+              span.overlay__footer-text Сообщение отправлено успешно
+              button.overlay__close(@click='closeMessage')
                 +icon('close', 'overlay__icon')
-            .overlay__footer-message
+            .overlay__footer-message.overlay__footer-message_no
               span.overlay__footer-text Сообщение не отправлено
-              .overlay__close
+              button.overlay__close(@click='closeMessage')
                 +icon('close', 'overlay__icon')
-            .overlay__footer-message
+            .overlay__footer-message.overlay__footer-message_error
               span.overlay__footer-text Сервер перегружен
-              .overlay__close
+              button.overlay__close(@click='closeMessage')
                 +icon('close', 'overlay__icon')
 
 
@@ -216,7 +220,7 @@ html(lang="ru")
                       span.contacts-form__icon
                        +icon('avatar')
                       span.contacts-form__error
-                        p Какая-то ошибка
+                        p Введите данные
 
                   .contacts-form__input-wrap
                     label.contacts-form__label.contacts-form__label_email
@@ -225,7 +229,7 @@ html(lang="ru")
                       span.contacts-form__icon
                         +icon('envelope')
                       span.contacts-form__error
-                        p Какая-то ошибка
+                        p Не верный формат данных
                 
                 .contacts-form__row
                   .contacts-form__input-wrap.contacts-form__input-wrap_textarea
@@ -235,7 +239,7 @@ html(lang="ru")
                       span.contacts-form__icon
                         +icon('message')
                       span.contacts-form__error
-                        p Какая-то ошибка
+                        p Заполните сообщение
 
                 button(type='submit').btn Отправить
 

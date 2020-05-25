@@ -3,27 +3,21 @@
     .about__title-row
       h2.about__title.title-section Блок "Обо мне"
       .btn-add
-        a(href="#").btn-add__link Добавить группу
+        button(type='button').btn-add__link Добавить группу
     .about__content
       .skills
         ul.skills__list
           li.skills__item
-            newSkill
-
-          li.skills__item
             skill
-
   
 </template>
 
 <script>
 
-import newSkill from '../blocks/new-skill'
 import skill from '../blocks/skill'
 export default {
   name: 'about',
   components: {
-    newSkill,
     skill,
   }
   
@@ -36,20 +30,15 @@ export default {
 @import "../css/mixin.pcss";
 
 .about {
-  display: grid;
-  grid-template:
-    "title" max-content
-    "about-content" 1fr
-    /1fr;
+  display: flex;
+  flex-direction: column;
 
   &__title-row {
-    grid-area: title;
     display: inline-flex;
     align-items: center;
   }
 
   &__content {
-    grid-area: about-content;
     display: flex;
   }
     &__title {
@@ -88,18 +77,22 @@ export default {
 
 .skills {
   width: 100%;
+
   &__list {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
     grid-gap: 30px;
   }
+
   &__item {
-    height: 387px;
+    padding: 24px 20px 30px;
+    /* min-height: 387px; */
     box-shadow: 4.1px 2.9px 20px 0 rgba(0, 0, 0, 0.07);
     background-color: #ffffff;
   }
 }
+
 .title-section {
   @include opensans();
   font-size: 21px;

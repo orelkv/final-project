@@ -1,18 +1,20 @@
 <template lang="pug">
   .content
-    headerTop
+    .admin      
+      //- authorize
 
-    .admin-panel
-      .container.admin-panel__container
-        aside.admin-panel__menu
-          menuTop
+      .admin__header  
+        headerTop
 
-        main.admin-panel__content
-          about
-          
-          works
-          
-          comments          
+      .container.admin__container
+
+        .admin__menu
+          menuTop(
+            @tabChanged='handleTabChange'
+          )
+
+        .admin__content
+          router-view
 
 </template>
 
@@ -21,18 +23,19 @@
 
 import headerTop from './components/main/header';
 import menuTop from './components/main/menu';
-import about from './components/main/about';
-import works from './components/main/works';
-import comments from './components/main/comments';
+import authorize from './components//main/authorize';
 
 export default {
   name: 'App',
   components: {
     headerTop,
     menuTop,
-    about,
-    works,
-    comments,
+    authorize
+  },
+  methods: {
+    handleTabChange(tab) {
+      this.$router.push(tab.href)
+    }
   }
 };
 </script>
@@ -138,26 +141,21 @@ table {
 }
 
 .content {
-  display: grid;
-  grid-template:
-    "header" max-content
-    "content" 1fr
-    / 1fr;
 }
 
-.admin-panel {
-  padding-bottom: 30px;
+.admin {
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+    background-image: linear-gradient(to top, #3e3e59, #454573);
+    padding: 25px 0;
+  }
+
   &__container {
-    display: grid;
-    grid-template:
-      "aside" max-content
-      "admin-panel" 1fr / 1fr;
-  }
-  &__menu {
-    grid-area: aside;
-  }
-  &__content {
-    grid-area: admin-panel;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 30px;
   }
 }
 </style>

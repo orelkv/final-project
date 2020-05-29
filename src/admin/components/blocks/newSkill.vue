@@ -15,7 +15,9 @@
           v-show = 'is_changed === true'
           ).skill__input
 
-        span.skill__title {{cat.category}}
+        span.skill__title(
+          v-show = 'is_completed === true'
+          ) {{category.title}}
         .skill__btn
 
           button(
@@ -25,7 +27,7 @@
 
           button(
             type='button'
-            @click.prevent = 'deleteCategory'
+            @click.prevent = 'cancelCategory'
             v-show = 'is_changed === true'
           ).skill__link_no.skill__link
 
@@ -36,14 +38,8 @@
             ).skill__link_add.skill__link
 
     ul.skill__tech
-      
-      toDoList(
-         :skills='cat.skills'
-        :todos='todos'
-        )
-      toDoForm(
-        :cat='cat'
-      )
+      toDoList
+      toDoForm
         
 </template>
 
@@ -62,13 +58,10 @@ export default {
     data() {
       return {
         category: {
-        title: ''
-      },
-      title: '',
-      formName: {
-        is_completed: false,
-      is_changed: false,
-      },
+          title: ''
+        },
+        is_completed: true,
+        is_changed: false,
     }
   },
   props: ['cat'],
@@ -90,32 +83,20 @@ export default {
       try {
         await this.addCategory(this.category.title)
         this.category.title = ''
-
       } catch (error) {
         alert(error.message)
       }
     },
-
-    formTitle() {
-    if(!this.formsTitle) {
-        return
-      };
-      const newFormTitle = {
-        id: Date.now(),
-        formsTitle: this.formsTitle,
-        is_completed: false,
-        is_changed: false,
-      };
-      this.formName = newFormTitle;
-      this.formsTitle = '';
+    changeCategory() {
+      this.is_completed = false;
+      this.is_changed = true;
+    },
+    cancelCategory() {
+      this.is_completed = true;
+      this.is_changed = false;
+      this.category.title = '';
     },
   },
-    computed: {
-    ...mapState({
-      todos: state => state.todos.tasks
-    })
-  }
-
 }
 </script>
 
@@ -151,7 +132,8 @@ export default {
     font-size: 18px;
     font-weight: 600;
     color: #414c63;
-    margin-bottom: 10px;
+    margin-bottom: 11px;
+    min-height: 25px;
   }
 
   &__input {

@@ -3,28 +3,41 @@ import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);
 
-import login from './components/main/authorize.vue'
-import about from './components/main/about.vue'
-import works from './components/main/works.vue'
-import comments from './components/main/comments.vue'
 
 const routes = [
   {
-    path: '/login',
-    component: login
-  },
-  {
-    path: '/admin',
-    component: about
+    path: '/',
+    component: () => import('./components/main/about.vue'),
+    meta: {
+      title: 'Обо мне'
+    }
   },
   {
     path: '/works',
-    component: works
+    component: () => import('./components/main/works.vue'),
+    meta: {
+      title: 'Работы'
+    }
+
   },
   {
     path: '/comments',
-    component: comments
-  }
+    component: () => import('./components/main/comments.vue'),
+    meta: {
+      title: 'Отзывы'
+    }
+
+  },
+  {
+    path: '/login',
+    component: () => import('./components/main/authorize.vue'),
+    meta: {
+      title: 'Логин'
+    }
+
+  },
 ];
 
-export default new VueRouter({ routes, mode: 'history' });
+export default new VueRouter({ routes });
+
+// mode: 'history'

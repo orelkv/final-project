@@ -10,6 +10,8 @@
           required
           :value='todo.title'
           ).todo-item__input
+        span.todo-item__percent {{skill.title}}
+
         .todo-item__input-wrap
         
           input(
@@ -19,7 +21,7 @@
             :value='todo.percent'
 
             ).todo-item__input.todo-item__input_percent
-          span.todo-item__percent {{todo.percent}}
+          span.todo-item__percent {{skill.percent}}
 
         .todo-item__btn-wrap
           todoBtnChanged(
@@ -43,7 +45,13 @@ import { mapMutations } from 'vuex';
 // import {mapState} from 'vuex'
 export default {
   name: 'todo-item',
-  props: ['todo'],  
+  props: {
+    skill: {
+      type: 'Object',
+      default: () => {},
+      required: true,
+    }, 
+  },
   components: {
     todoBtnChanged,
     todoBtnCompleted,
@@ -73,6 +81,7 @@ export default {
   //   })
   // }
 }
+
 </script>
 
 

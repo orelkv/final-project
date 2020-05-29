@@ -1,11 +1,11 @@
 <template lang="pug">
-  form(@submit.prevent='submitForm').todo-form
+  form(@submit.prevent='addNewSkill').todo-form
     .todo-form__wrap
       input(
         type='text' name='newSkill'
         placeholder='Новый навык'
         required
-        v-model='title'
+        v-model='skill.title'
         ).todo-form__input
       .todo-form__input-wrap
         input(
@@ -13,24 +13,42 @@
           name='newSkillPercent'
           placeholder='100'
           required
-          v-model='percent'
+          v-model='skill.percent'
           ).todo-form__input.todo-form__input_percent
-      button.todo-form__add-tech
+      button(type='submit').todo-form__add-tech
 
 </template>
 
 <script>
-import {mapMutations} from 'vuex';
+import {mapMutations, mapActions} from 'vuex';
 export default {
   name: 'todo-form',
+  props: ['cat'],
+
   data() {
     return {
-      title: '',
-      percent: '',
+      skill: {
+        title: '',
+        percent: 0,        
+      }
     }
   },
+
   methods: {
     ...mapMutations(['newItemCreated']),
+    ...mapActions('skills', ['addSkill']),
+
+    async addNewSkill() {
+      const skillData = {
+        ...this.skill,
+        category: this.cat.id
+      }
+      try {
+        await this.addSkill(skillData);
+      } catch (error) {
+        console.log(error)
+      }
+    },
     submitForm() {
       if(!this.title) {
         return
@@ -46,6 +64,7 @@ export default {
       this.title = '';
       this.percent = '';
     }
+
   },
 }
 </script>

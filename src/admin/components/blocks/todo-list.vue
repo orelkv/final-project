@@ -1,9 +1,9 @@
 <template lang="pug">
   ul.todo-list
     todoItem(
-      v-for = 'todo in todos'
-      :key='todo.id'
-      :todo='todo'
+      v-for = 'skill in skills'
+      :key='skill.id'
+      :skill='skill'
     )
 
 </template>
@@ -16,7 +16,7 @@ import todoItem from './todo-item';
 
 export default {
   name: 'todo-list',
-  props: ['todos'],
+  props: ['todos', 'skills'],
   components: {
     todoItem,
   },

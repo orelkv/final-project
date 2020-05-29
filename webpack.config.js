@@ -90,7 +90,7 @@ module.exports = (env, argv) => {
   const config = {
     entry: {
       main: "./src/main.js",                    // пути за которыми нужно следить основной файл
-      admin: "./src/admin/main.js"              // админка
+      admin: ['babel-polyfill', "./src/admin/main.js"]              // админка
     },
     output: {
       path: path.resolve(__dirname, "./dist"),        // куда ложить готовые файлы. path.resolve - модуль для работы с путями
@@ -99,7 +99,10 @@ module.exports = (env, argv) => {
       chunkFilename: "[chunkhash].js"               // как будет называться файл для зависимостей (vue, jquery и т.п.)
     },
     module: {
-      rules: [pcss, vue, js, files, svg, pug]     // правила для обработки зависимостей
+      rules: [pcss, vue, js, files, svg, pug],     // правила для обработки зависимостей
+      // loaders: [
+      //   { test: /\.jsx?$/, loader: 'babel', }
+      // ]
     },
     resolve: {
       alias: {

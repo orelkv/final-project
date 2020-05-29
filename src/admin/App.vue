@@ -1,7 +1,6 @@
 <template lang="pug">
   .content
     .admin      
-      //- authorize
 
       .admin__header  
         headerTop
@@ -23,14 +22,12 @@
 
 import headerTop from './components/main/header';
 import menuTop from './components/main/menu';
-import authorize from './components//main/authorize';
 
 export default {
   name: 'App',
   components: {
     headerTop,
     menuTop,
-    authorize
   },
   methods: {
     handleTabChange(tab) {
@@ -67,7 +64,8 @@ body {
 
 .wrapper {
   overflow: hidden;
-  min-height: 100%;
+  min-height: 100vh;
+  position: relative;
 }
 
 .container {
@@ -138,9 +136,6 @@ img {
 table {
   border-collapse: collapse;
   border-spacing: 0;
-}
-
-.content {
 }
 
 .admin {

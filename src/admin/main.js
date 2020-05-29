@@ -4,9 +4,12 @@ import Vuex from 'vuex';
 import {store} from './store/index';
 import SimpleVueValidation from 'simple-vue-validator';
 import router from './router';
+import $axios from './requests';
 
 Vue.use(SimpleVueValidation);
 Vue.use(Vuex);
+
+store.$axios = $axios;
 
 new Vue({
   el: "#app-root",

@@ -3,24 +3,57 @@
     .about__title-row
       h2.about__title.title-section Блок "Обо мне"
       .btn-add
-        button(type='button').btn-add__link Добавить группу
+        button(
+          type='button'
+          @click.prevent='openCategory'
+          ).btn-add__link Добавить группу
     .about__content
       .skills
         ul.skills__list
-          li.skills__item
-            skill
+          li.skills__item(v-show = 'add_category == true')
+            newSkill
+          li.skills__item(v-for='cat in categories' :key='cat.id')
+            skill(
+              :cat='cat'
+            )
   
 </template>
 
 <script>
+import {mapState, mapMutations} from 'vuex';
 
+import newSkill from '../blocks/newSkill'
 import skill from '../blocks/skill'
 export default {
   name: 'about',
   components: {
+    newSkill,
     skill,
+  },
+
+    computed: {
+    ...mapState('categories', {
+      categories: state => state.categories,
+      add_category: state => state.add_category,
+    })
+  },
+
+  methods: {
+    ...mapMutations('categories', ['openNewCategory', 'changeNameCategory']),    
+
+    openCategory() {
+      console.log(this.add_category);
+      this.openNewCategory();
+    },
+
+    changeCategory() {
+      this.changeNameCategory()
+    },
+
+    // openNewCategory() {
+    //   this.add_category = true;
+    // },
   }
-  
 }
 </script>
 

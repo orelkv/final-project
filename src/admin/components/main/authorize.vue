@@ -9,11 +9,12 @@
           form.form(@submit.prevent='login')
             .form__row
               label.form__label
-                input.form__input(type='text' name='login' v-model='user.login')
+                input.form__input(type='text' v-model='user.name' )
                 span.form__title Логин
                 span.form__icon.form__icon_avatar
             .form__row
               label.form__label
+                input.form__input(type='text' v-model='user.password' )
                 span.form__title Пароль
                 span.form__icon.form__icon_pass
             button(type="submit").form__btn Отправить
@@ -21,10 +22,10 @@
 </template>
 
 <script>
-import axios from 'axios';
+import $axios from '../../requests';
 
 const baseUrl = 'https://webdev-api.loftschool.com';
-const token = '';
+const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMzMiwiaXNzIjoiaHR0cDovL3dlYmRldi1hcGkubG9mdHNjaG9vbC5jb20vbG9naW4iLCJpYXQiOjE1OTA0MzQ3MTIsImV4cCI6MTU5MDQ1MjcxMiwibmJmIjoxNTkwNDM0NzEyLCJqdGkiOiJTZ0psS2J2bmJHUnRob1RiIn0.T9oSJFis0b3sSXoJeByqnAn0NQXProVLXYgY4z63qrA';
 
 
 
@@ -32,19 +33,25 @@ export default {
   data() {
     return {
       user: {
-        login: '',
-        pass: '',
+        name: '',
+        password: '',
       }
     }
   },
   methods: {
-    login() {
-      axios.post(baseUrl + '/login', this.user).then(response => {
-        console.log(response.data)
-      }).catch(error => {
-        console.log(error.response.data)
-      })
-      console.log(this.user)
+    async login() {
+      try {
+        const response = await $axios.post('/login', this.user);
+        const token = response.data.token;
+        localStorage.setItem('token', token);
+        $axios.defaults.headers['Authorization'] = `Bearer ${token}`;
+
+        this.$router.replace('/')
+
+        console.log(response)
+      } catch (error) {
+        console.log(error)
+      }
     }
   }
   
@@ -56,11 +63,13 @@ export default {
 @import "../css/mixin.pcss";
 
 .authorize {
-  /* display: none; */
-  position: fixed;  
+  position: absolute;  
   z-index: 9999;
-  width: 100vw;
-  height: 100vh;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  
   background: url('../../image/mountain.jpg') center center / cover no-repeat;
 
 
@@ -187,7 +196,7 @@ export default {
       background: svg-load('avatar.svg', stroke='rgba(65, 76, 99, 0.302)') center center / contain no-repeat;
     }
     &_pass:before {
-      background: svg-load('avatar.svg', stroke='rgba(65, 76, 99, 0.302)') center center / contain no-repeat;
+      background: svg-load('key.svg', stroke='rgba(65, 76, 99, 0.302)') center center / contain no-repeat;
     }
   }
 

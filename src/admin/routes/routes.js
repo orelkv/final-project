@@ -29,6 +29,5 @@ export default [
     meta: {
       public: true,
     }
-
   },
 ];

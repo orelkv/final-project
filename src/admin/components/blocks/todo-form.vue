@@ -75,6 +75,8 @@ export default {
 @import "../css/mixin.pcss";
 
 .todo-form {  
+    margin-top: 80px;
+
   width: 100%;
   &__wrap {
     display: flex;

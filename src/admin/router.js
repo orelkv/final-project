@@ -32,7 +32,7 @@ const routes = [
     path: '/login',
     component: () => import('./components/main/authorize.vue'),
     meta: {
-      title: 'Логин'
+      public: true,
     }
 
   },

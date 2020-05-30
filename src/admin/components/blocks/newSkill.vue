@@ -38,7 +38,7 @@
             ).skill__link_add.skill__link
 
     ul.skill__tech
-      toDoList
+      //- toDoList
       toDoForm
         
 </template>
@@ -63,26 +63,23 @@ export default {
         is_completed: true,
         is_changed: false,
     }
-  },
-  props: ['cat'],
+  },    
 
   created() {
     this.fetchCategories()
   },
 
-  computed: {
-    ...mapState('categories', {
-      categories: state => state.categories
-    })
-  },
-
   methods: {
     ...mapActions('categories', ['addCategory', 'fetchCategories']),
+    ...mapState('categories', {
+      add_category: state => state.add_category
+    }),
 
     async createdNewCategory() {
       try {
-        await this.addCategory(this.category.title)
-        this.category.title = ''
+        await this.addCategory(this.category.title);
+        this.category.title = '';
+        this.add_category = false;
       } catch (error) {
         alert(error.message)
       }
@@ -94,7 +91,6 @@ export default {
     cancelCategory() {
       this.is_completed = true;
       this.is_changed = false;
-      this.category.title = '';
     },
   },
 }

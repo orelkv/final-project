@@ -10,7 +10,7 @@
     .about__content
       .skills
         ul.skills__list
-          li.skills__item(v-show = 'add_category == true')
+          li.skills__item(v-show = 'add_category === true')
             newSkill
           li.skills__item(v-for='cat in categories' :key='cat.id')
             skill(
@@ -39,20 +39,12 @@ export default {
   },
 
   methods: {
-    ...mapMutations('categories', ['openNewCategory', 'changeNameCategory']),    
+    ...mapMutations('categories', ['openNewCategory']),    
 
     openCategory() {
-      console.log(this.add_category);
       this.openNewCategory();
     },
 
-    changeCategory() {
-      this.changeNameCategory()
-    },
-
-    // openNewCategory() {
-    //   this.add_category = true;
-    // },
   }
 }
 </script>

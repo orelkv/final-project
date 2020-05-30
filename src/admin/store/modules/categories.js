@@ -8,7 +8,6 @@ export default {
   },
   mutations: {
     openNewCategory(state) {
-      console.log(state.add_category)
       state.add_category = true;
     },
     changeNameCategory(state) {
@@ -39,7 +38,6 @@ export default {
         
       } catch (error) {
         console.log(error);
-
       }
     }
   }

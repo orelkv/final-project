@@ -9,7 +9,7 @@
         input(          
           type='text'
           name='skillTitle'
-          placeholder='Название новой группы'
+          placeholder='Название группы'
           required
           v-model='category.title'
           v-show = 'is_changed === true'
@@ -37,10 +37,9 @@
 
     ul.skill__tech
       
-      toDoList(
-         :skills='cat.skills'
-        :todos='todos'
-        )
+      //- toDoList(
+      //-   :skills='cat.skills'
+      //-   )
       toDoForm(
         :cat='cat'
       )
@@ -64,23 +63,16 @@ export default {
         category: {
         title: ''
       },
-      title: '',
-      formName: {
-        is_completed: false,
+      is_completed: true,
       is_changed: false,
-      },
+
     }
   },
-  props: ['cat'],
+    props: ['cat'],
+
 
   created() {
     this.fetchCategories()
-  },
-
-  computed: {
-    ...mapState('categories', {
-      categories: state => state.categories
-    })
   },
 
   methods: {
@@ -96,18 +88,14 @@ export default {
       }
     },
 
-    formTitle() {
-    if(!this.formsTitle) {
-        return
-      };
-      const newFormTitle = {
-        id: Date.now(),
-        formsTitle: this.formsTitle,
-        is_completed: false,
-        is_changed: false,
-      };
-      this.formName = newFormTitle;
-      this.formsTitle = '';
+    changeCategory() {
+      this.is_completed = false;
+      this.is_changed = true;
+    },
+    cancelCategory() {
+      this.is_completed = true;
+      this.is_changed = false;
+      this.category.title = '';
     },
   },
     computed: {

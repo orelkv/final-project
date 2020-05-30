@@ -16,8 +16,14 @@ import todoItem from './todo-item';
 
 export default {
   name: 'todo-list',
-  props: ['todos', 'skills'],
-  components: {
+  data() {
+    return {
+      skill: {
+        title: '',
+        percent: 0,        
+      }
+    }
+  },  components: {
     todoItem,
   },
 }
@@ -30,6 +36,5 @@ export default {
 .todo-list {
   display: flex;
   flex-direction: column;
-  margin-bottom: 80px;
 }
 </style>

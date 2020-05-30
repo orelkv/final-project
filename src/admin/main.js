@@ -3,8 +3,9 @@ import App from './App.vue';
 import Vuex from 'vuex';
 import {store} from './store/index';
 import SimpleVueValidation from 'simple-vue-validator';
-import router from './router';
+import router from './routes/index';
 import $axios from './requests';
+// import user from './requests';
 
 Vue.use(SimpleVueValidation);
 Vue.use(Vuex);
@@ -18,22 +19,3 @@ new Vue({
   router
 });
 
-
-// const store = new Vuex.Store({
-//   state: {
-//     tasks: []
-//   },
-//   mutations: {
-//     addTodo (state, payload) {
-//       console.log(state)
-//       console.log(payload)
-//       // state.tasks++
-//     },
-
-//     removeTodo (state, payload) {
-//       console.log(state)
-//       console.log(payload)
-//       // state.tasks++
-//     }
-//   }
-// })

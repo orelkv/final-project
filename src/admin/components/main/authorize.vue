@@ -3,7 +3,7 @@
     .authorize__wrap
       .authorize__content
         .authorize__title Авторизация
-        span.authorize__close
+        button.authorize__close
 
         .authorize__form
           form.form(@submit.prevent='login')
@@ -24,8 +24,8 @@
 <script>
 import $axios from '../../requests';
 
-const baseUrl = 'https://webdev-api.loftschool.com';
-const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMzMiwiaXNzIjoiaHR0cDovL3dlYmRldi1hcGkubG9mdHNjaG9vbC5jb20vbG9naW4iLCJpYXQiOjE1OTA0MzQ3MTIsImV4cCI6MTU5MDQ1MjcxMiwibmJmIjoxNTkwNDM0NzEyLCJqdGkiOiJTZ0psS2J2bmJHUnRob1RiIn0.T9oSJFis0b3sSXoJeByqnAn0NQXProVLXYgY4z63qrA';
+// const baseUrl = 'https://webdev-api.loftschool.com';
+// const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMzMiwiaXNzIjoiaHR0cDovL3dlYmRldi1hcGkubG9mdHNjaG9vbC5jb20vbG9naW4iLCJpYXQiOjE1OTA0MzQ3MTIsImV4cCI6MTU5MDQ1MjcxMiwibmJmIjoxNTkwNDM0NzEyLCJqdGkiOiJTZ0psS2J2bmJHUnRob1RiIn0.T9oSJFis0b3sSXoJeByqnAn0NQXProVLXYgY4z63qrA';
 
 
 
@@ -42,13 +42,13 @@ export default {
     async login() {
       try {
         const response = await $axios.post('/login', this.user);
+        console.log(response)
         const token = response.data.token;
         localStorage.setItem('token', token);
         $axios.defaults.headers['Authorization'] = `Bearer ${token}`;
 
         this.$router.replace('/')
 
-        console.log(response)
       } catch (error) {
         console.log(error)
       }

@@ -68,5 +68,14 @@ export default {
     }
   }
 }
+.title-section {
+  @include opensans();
+  font-size: 21px;
+  font-weight: bold;
+  color: #414c63;
+  margin: 50px 0;
+  margin-right: 50px;
+}
+
 
 </style>

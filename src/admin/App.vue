@@ -22,12 +22,18 @@
 
 import headerTop from './components/main/header';
 import menuTop from './components/main/menu';
+import comments from './components/main/comments';
+import about from './components/main/about';
+import works from './components/main/works';
 
 export default {
   name: 'App',
   components: {
     headerTop,
     menuTop,
+    comments,
+    works,
+    about
   },
   methods: {
     handleTabChange(tab) {

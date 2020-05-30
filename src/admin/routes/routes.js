@@ -13,7 +13,6 @@ export default [
     meta: {
       title: 'Работы'
     }
-
   },
   {
     path: '/comments',
@@ -21,7 +20,6 @@ export default [
     meta: {
       title: 'Отзывы'
     }
-
   },
   {
     path: '/login',

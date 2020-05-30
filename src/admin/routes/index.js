@@ -10,11 +10,11 @@ const guard = axios.create({
   baseURL: 'https://webdev-api.loftschool.com',
 });
 
-const router = new VueRouter({ routes });
+const router = new VueRouter({ routes, mode: 'history' });
   
 // router.beforeEach(async (to, from, next) => {
 //   const isPublicRoute = to.matched.some(router => router.meta.public);
-//   const isUserLoggedIn = store.getters['../store/modules//user/userIsLogged'];
+//   // const isUserLoggedIn = store.getters['../store/modules//user/userIsLogged'];
 
 //   if(!isPublicRoute && !isUserLoggedIn) {
 //     const token = localStorage.getItem('token');
@@ -22,7 +22,7 @@ const router = new VueRouter({ routes });
 //     guard.defaults.headers['Authorization'] = `Bearer ${token}`;
 
 //     try {
-//       const {data} =guard.get('user');
+//       const {data} = guard.get('user');
 //       store.commit('user/SET_USER', data.user);
 //       next()
 //     } catch (error) {

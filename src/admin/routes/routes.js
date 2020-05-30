@@ -1,7 +1,7 @@
-
+import Vue from 'vue'
 export default [
   {
-    path: '/',
+    path: '/admin',
     component: () => import('../components/main/about.vue'),
     meta: {
       title: 'Обо мне'

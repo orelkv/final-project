@@ -13,9 +13,9 @@ export default [
   {
     path: '/works',
     component: works,
-    // meta: {
-    //   title: 'Работы'
-    // }
+    meta: {
+      title: 'Работы'
+    }
   },
   {
     path: '/comments',

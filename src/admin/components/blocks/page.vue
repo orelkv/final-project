@@ -2,7 +2,7 @@
   .page
     .page__screen
       .page-photo
-        img(src='../../image/preview/autumn.jpg').page-photo__img
+        img(src='../../../images/content/preview/autumn.jpg').page-photo__img
 
     .page__content
       h4.page__title Сайт школы образования

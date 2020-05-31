@@ -70,7 +70,7 @@ export default {
   left: 0;
   right: 0;
   
-  background: url('../../image/mountain.jpg') center center / cover no-repeat;
+  background: url('../../../images/content/preview/autumn.jpg') center center / cover no-repeat;
 
 
   &__wrap {

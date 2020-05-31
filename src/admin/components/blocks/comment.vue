@@ -3,7 +3,7 @@
     .comment__author
       .comment__avatar
         .avatar
-          img.avatar__img(src='../../image/user.jpg')
+          img.avatar__img(src='../../../images/content/user.jpg')
 
       .comment__author-info
         h4.comment__author-name Александр Симаков

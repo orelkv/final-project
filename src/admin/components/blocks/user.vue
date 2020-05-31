@@ -1,7 +1,7 @@
 <template lang="pug">
   .user
     .user__avatar.avatar
-      img(src='../../image/user.jpg').avatar__img
+      img(src='../../../images/content/user.jpg').avatar__img
 
     .user__name Орлов Алексей
 

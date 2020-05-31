@@ -42,7 +42,6 @@ export default {
     async login() {
       try {
         const response = await $axios.post('/login', this.user);
-        console.log(response)
         const token = response.data.token;
         localStorage.setItem('token', token);
         $axios.defaults.headers['Authorization'] = `Bearer ${token}`;
@@ -70,14 +69,14 @@ export default {
   left: 0;
   right: 0;
   
-  background: url('../../../images/content/preview/autumn.jpg') center center / cover no-repeat;
+  background: url('../../../images/content/rock-fest.jpg') center center / cover no-repeat;
 
 
   &__wrap {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(45, 60, 78, .902);
+    background-color: rgba(45, 60, 78, .702);
     width: 100%;
     height: 100%;
   }

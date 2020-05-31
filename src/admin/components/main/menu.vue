@@ -14,7 +14,7 @@
 <script>
 
 const tabs = [
-  {id: 0, title: 'Обо мне', href: '/admin'},
+  {id: 0, title: 'Обо мне', href: '/'},
   {id: 1, title: 'Работы', href: '/works'},
   {id: 2, title: 'Отзывы', href: '/comments'},
 ];

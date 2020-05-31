@@ -5,7 +5,6 @@ import {store} from './store/index';
 import SimpleVueValidation from 'simple-vue-validator';
 import router from './routes/index';
 import $axios from './requests';
-// import user from './requests';
 
 Vue.use(SimpleVueValidation);
 Vue.use(Vuex);
@@ -14,8 +13,8 @@ store.$axios = $axios;
 
 new Vue({
   el: "#app-root",
-  render: h => h(App),
   store,
-  router
-});
+  router,
+  render: h => h(App),
+})
 

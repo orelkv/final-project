@@ -1,7 +1,10 @@
-import Vue from 'vue'
+
+import works from '../components/main/works.vue';
+
+
 export default [
   {
-    path: '/admin',
+    path: '/',
     component: () => import('../components/main/about.vue'),
     meta: {
       title: 'Обо мне'
@@ -9,10 +12,10 @@ export default [
   },
   {
     path: '/works',
-    component: () => import('../components/main/works.vue'),
-    meta: {
-      title: 'Работы'
-    }
+    component: works,
+    // meta: {
+    //   title: 'Работы'
+    // }
   },
   {
     path: '/comments',
